@@ -182,70 +182,65 @@ main {
 .button:hover { background: #ffd83d; }
 
 /* ---------- University page ---------- */
-.page-hero {
+/* Framed hero photo with a yellow border; the full name sits on the photo. */
+.faculty-hero {
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: clamp(18rem, 50vw, 32rem);
-  background: linear-gradient(135deg, var(--surface), #0b141c);
+  margin-top: clamp(0.5rem, 2vw, 1.5rem);
+  aspect-ratio: 2 / 1;
+  border: 6px solid var(--signal);
+  background: var(--surface);
   overflow: hidden;
 }
 
-.page-hero img {
+.faculty-hero img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 40%;
 }
 
-.page-hero::after {
+.faculty-hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--base) 0%, rgba(15, 26, 36, 0.6) 40%, rgba(15, 26, 36, 0) 75%);
+  background: linear-gradient(to top, rgba(15, 26, 36, 0.92) 0%, rgba(15, 26, 36, 0.55) 35%, rgba(15, 26, 36, 0) 65%);
 }
 
-.placeholder-note {
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.page-hero-text {
+.faculty-hero-text {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 0.75rem;
-  width: 100%;
-  max-width: var(--page-width);
-  margin: 0 auto;
-  padding: 0 var(--gutter) clamp(1.5rem, 4vw, 3rem);
+  gap: 0.5rem;
+  padding: clamp(1rem, 3vw, 2rem);
 }
 
-.page-hero-text h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); max-width: 22ch; }
-.page-hero-text p { font-size: 1.2rem; }
+.faculty-hero-text h1 { font-size: clamp(2.1rem, 5vw, 4rem); max-width: 22ch; }
+.faculty-hero-text p { font-size: 1.15rem; }
 
 .section {
   padding: clamp(2rem, 5vw, 3.5rem) 0;
   border-top: 1px solid var(--line);
 }
 
-.section:first-child { border-top: 0; }
+.faculty-hero + .section { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
 
 .section h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1rem; }
-.section h3 { font-size: 1.35rem; margin: 1.5rem 0 0.75rem; }
 .section p + p { margin-top: 1rem; }
 
-.about {
+.about,
+.history {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: start;
 }
+
+.history { margin-bottom: clamp(1.5rem, 4vw, 3rem); }
+.history p { max-width: 62ch; }
 
 .facts { margin: 0; }
 
@@ -262,51 +257,97 @@ main {
 .facts dd { margin: 0; }
 .facts a { text-decoration-color: var(--signal); text-underline-offset: 3px; }
 
-.dept-list {
+.photo { margin: 0; }
+.photo img { display: block; width: 100%; height: auto; }
+.photo figcaption { margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem; }
+
+/* ---------- Contact page ---------- */
+.contact {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+}
+
+.contact-details { display: grid; gap: 1.25rem; justify-items: start; }
+.contact-details .facts { width: 100%; }
+.contact-details h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+.contact-details p { color: var(--muted); }
+
+.contact-logo {
+  display: grid;
+  place-items: center;
+  width: 5rem;
+  height: 5rem;
+  background: var(--signal);
+  color: var(--on-signal);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.1rem;
+}
+
+.facts a { text-decoration-color: var(--signal); text-underline-offset: 3px; }
+
+.social {
+  display: flex;
   gap: 0.75rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.dept-list li {
-  padding: 0.85rem 1.25rem;
-  background: var(--surface);
-  border-left: 5px solid var(--line);
-}
-
-.timeline {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-left: 2px solid var(--line);
-}
-
-.timeline li {
-  position: relative;
+/* Each icon keeps its platform's brand colour. */
+.social a {
   display: grid;
-  grid-template-columns: 8.5rem 1fr;
-  gap: 1rem;
-  padding: 0 0 2rem 1.75rem;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: #fff;
 }
 
-.timeline li:last-child { padding-bottom: 0; }
+.social a:hover { filter: brightness(1.12); }
 
-.timeline li::before {
-  content: "";
-  position: absolute;
-  left: -0.5rem;
-  top: 0.55rem;
-  width: 0.85rem;
-  height: 0.85rem;
-  background: var(--signal);
+.social .instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+.social .facebook { background: #1877f2; }
+.social .youtube { background: #ff0000; }
+.social .linkedin { background: #0a66c2; }
+
+.contact-form {
+  display: grid;
+  gap: 1.1rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--surface);
+  border-left: 5px solid var(--signal);
 }
 
-.timeline .year { font-family: var(--font-display); font-weight: 800; font-size: 1.9rem; line-height: 1.1; }
-.timeline h3 { margin: 0 0 0.35rem; }
-.timeline p { color: var(--muted); }
+.contact-form h2 { font-size: 2rem; }
+
+.field { display: grid; gap: 0.35rem; }
+.field label { font-weight: 500; }
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  background: var(--base);
+  color: var(--text);
+  border: 2px solid var(--line);
+  font: inherit;
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+  border-color: var(--signal);
+}
+
+.contact-form .button { justify-self: start; border: 0; font: inherit; font-weight: 700; cursor: pointer; }
+.form-note { color: var(--muted); font-size: 0.9rem; }
 
 .cta {
   display: flex;
@@ -320,7 +361,8 @@ main {
   border-left: 5px solid var(--signal);
 }
 
-.cta h2 { font-size: clamp(1.6rem, 3.5vw, 2.25rem); }
+.cta h2 { font-size: clamp(1.6rem, 3.5vw, 2.25rem); margin-bottom: 0.5rem; }
+.cta p { color: var(--muted); }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -336,7 +378,9 @@ main {
 @media (max-width: 52rem) {
   .hero,
   .intro,
-  .about { grid-template-columns: 1fr; }
-  .timeline li { grid-template-columns: 1fr; gap: 0.25rem; }
+  .about,
+  .history,
+  .contact { grid-template-columns: 1fr; }
+  .faculty-hero { aspect-ratio: 4 / 3; }
   .facts div { grid-template-columns: 1fr; gap: 0.15rem; }
 }
