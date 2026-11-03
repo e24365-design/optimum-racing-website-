@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Team Roster | Optimum Racing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slate-blue: #0f172a;
+            --slate-blue-light: #1e293b;
+            --pitlane-yellow: #ffcc00;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--slate-blue);
+            color: var(--text-light);
+            font-family: 'Figtree', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Big Shoulders Display', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--slate-blue-light);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .uop-badge {
+            background-color: var(--pitlane-yellow);
+            color: var(--slate-blue);
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--pitlane-yellow);
+        }
+
+        nav a.active {
+            border-bottom: 3px solid var(--pitlane-yellow);
+            color: var(--text-light);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5%;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--slate-blue-light);
+            padding-bottom: 20px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            color: var(--text-light);
+        }
+
+        .back-link {
+            color: var(--pitlane-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Roster Grid */
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member-card {
+            background-color: var(--slate-blue-light);
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid var(--pitlane-yellow);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            background-color: var(--text-muted);
+            border: 3px solid var(--slate-blue);
+        }
+
+        .team-member-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .member-role {
+            color: var(--pitlane-yellow);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .member-qualification {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .member-dept {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .member-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .member-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border: 1px solid var(--text-muted);
+            padding: 5px 12px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .member-links a:hover {
+            border-color: var(--pitlane-yellow);
+            color: var(--pitlane-yellow);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="uop-badge">UoP</div>
+            <div class="site-title">Optimum Racing</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <!-- Leaving Team Info active to show this is a sub-page of the team section -->
+                <li><a href="team.html" class="active">Team Info</a></li>
+                <li><a href="competitions.html">Competition Info</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <div class="header-section">
+            <h1 class="page-title">Meet the Team</h1>
+            <a href="team.html" class="back-link">← Back to Leadership</a>
+        </div>
+
+        <div class="roster-grid">
+            
+            <!-- Member 1 -->
+            <div class="team-member-card">
+                <img src="images/member1.jpg" alt="Team Member">
+                <h3>Kasun Perera</h3>
+                <span class="member-role">Suspension Engineer</span>
+                <div class="member-qualification">BSc Engineering Undergraduate</div>
+                <div class="member-dept">Mechanical Engineering</div>
+                <div class="member-links">
+                    <a href="mailto:kasun.fake@eng.pdn.ac.lk">Email</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="team-member-card">
+                <img src="images/member2.jpg" alt="Team Member">
+                <h3>Amandi Silva</h3>
+                <span class="member-role">Telemetry Specialist</span>
+                <div class="member-qualification">BSc Engineering Undergraduate</div>
+                <div class="member-dept">Electrical & Electronic Eng.</div>
+                <div class="member-links">
+                    <a href="mailto:amandi.fake@eng.pdn.ac.lk">Email</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="team-member-card">
+                <img src="images/member3.jpg" alt="Team Member">
+                <h3>Devin Fernando</h3>
+                <span class="member-role">Powertrain Calibrator</span>
+                <div class="member-qualification">BSc Engineering Undergraduate</div>
+                <div class="member-dept">Mechanical Engineering</div>
+                <div class="member-links">
+                    <a href="mailto:devin.fake@eng.pdn.ac.lk">Email</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="team-member-card">
+                <img src="images/member4.jpg" alt="Team Member">
+                <h3>Tharushi de Silva</h3>
+                <span class="member-role">Composites Fabricator</span>
+                <div class="member-qualification">BSc Engineering Undergraduate</div>
+                <div class="member-dept">Manufacturing & Industrial Eng.</div>
+                <div class="member-links">
+                    <a href="mailto:tharushi.fake@eng.pdn.ac.lk">Email</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+             <!-- Member 5 -->
+             <div class="team-member-card">
+                <img src="images/member5.jpg" alt="Team Member">
+                <h3>Nuwan Jayasuriya</h3>
+                <span class="member-role">Data Analyst</span>
+                <div class="member-qualification">BSc Engineering Undergraduate</div>
+                <div class="member-dept">Computer Engineering</div>
+                <div class="member-links">
+                    <a href="mailto:nuwan.fake@eng.pdn.ac.lk">Email</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+            <!-- Member 6 -->
+            <div class="team-member-card">
+                <img src="images/member6.jpg" alt="Team Member">
+                <h3>Senuri Wijesinghe</h3>
+                <span class="member-role">Operations & Logistics</span>
+                <div class="member-qualification">BSc Engineering Undergraduate</div>
+                <div class="member-dept">Engineering Management</div>
+                <div class="member-links">
+                    <a href="mailto:senuri.fake@eng.pdn.ac.lk">Email</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
