@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Optimum Racing</title>
+  <meta name="description" content="Contact the Optimum Racing Formula Student team at the University of Peradeniya, or become a sponsor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">UoP</span>
+      <span class="brand-name">Optimum Racing</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="team.html">Team Info</a></li>
+        <li><a href="competition.html">Competition Info</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact" aria-labelledby="contact-heading">
+      <div class="contact-details">
+        <div class="contact-logo" aria-hidden="true">UoP</div>
+        <h1 id="contact-heading">Contact us</h1>
+        <p>Questions about the team, the car or a competition? Write to us and we will reply.</p>
+
+        <!-- Replace the email, phone and social links below with the team's real ones. -->
+        <dl class="facts">
+          <div><dt>Email</dt><dd><a href="mailto:optimumracing@example.com">optimumracing@example.com</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+94000000000">+94 00 000 0000</a></dd></div>
+          <div>
+            <dt>Address</dt>
+            <dd>
+              Faculty of Engineering, University of Peradeniya, Prof. E.O.E. Pereira Mawatha, Peradeniya 20400, Sri Lanka<br>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Faculty+of+Engineering+University+of+Peradeniya" rel="noopener">Open in Google Maps</a>
+            </dd>
+          </div>
+        </dl>
+
+        <ul class="social" aria-label="Social media">
+          <li>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.6V3.5c-.3 0-1.2-.2-2.3-.2-2.4 0-4 1.4-4 4.1v2.4H7.7V13h2.7v8z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><circle cx="6.5" cy="6.5" r="1.7"/><rect x="5" y="9.5" width="3" height="9"/><path d="M10.5 9.5h2.8v1.3c.5-.9 1.6-1.5 3-1.5 2.6 0 3.2 1.7 3.2 3.9v5.8h-3v-5.1c0-1.2-.2-2.2-1.6-2.2s-1.8 1-1.8 2.2v5.1h-3z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form" data-mailto="optimumracing@example.com">
+        <h2>Send a message</h2>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <button class="button" type="submit">Send message</button>
+        <p class="form-note" role="status" aria-live="polite">Sending opens your email app with the message ready to send.</p>
+      </form>
+    </section>
+
+    <section class="cta" aria-labelledby="sponsor-heading">
+      <div>
+        <h2 id="sponsor-heading">Become a sponsor</h2>
+        <p>Help us build and race the car. Sponsors support the team with funding, materials and equipment, and every sponsor is credited on our car page.</p>
+      </div>
+      <a class="button" href="mailto:optimumracing@example.com?subject=Sponsorship%20enquiry">Email us about sponsorship</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Concept website designed for the Optimum Racing recruitment task. Not the official team site.</p>
+  </footer>
+
+</body>
+</html>
