@@ -29,26 +29,19 @@
   </header>
 
   <main>
-    <section class="contact" aria-labelledby="contact-heading">
-      <div class="contact-details">
-        <div class="contact-logo" aria-hidden="true">UoP</div>
-        <h1 id="contact-heading">Contact us</h1>
-        <p>Questions about the team, the car or a competition? Write to us and we will reply.</p>
-
-        <!-- Replace the email and phone below, and point each social icon at the team's real profile, once you have them. -->
-        <dl class="facts">
-          <div><dt>Email</dt><dd><a href="mailto:optimumracing@example.com">optimumracing@example.com</a></dd></div>
-          <div><dt>Phone</dt><dd><a href="tel:+94000000000">+94 00 000 0000</a></dd></div>
-          <div>
-            <dt>Address</dt>
-            <dd>
-              Faculty of Engineering, University of Peradeniya, Prof. E.O.E. Pereira Mawatha, Peradeniya 20400, Sri Lanka<br>
-              <a href="https://www.google.com/maps/search/?api=1&amp;query=Faculty+of+Engineering+University+of+Peradeniya" rel="noopener">Open in Google Maps</a>
-            </dd>
-          </div>
-        </dl>
-
-        <ul class="social" aria-label="Social media">
+    <section class="contact-top" aria-label="Logos and social media">
+      <div class="logos">
+        <!-- Save the university logo as images/uop-logo.png and the team logo as images/team-logo.png. Until then the placeholders show. -->
+        <span class="logo-slot uop">
+          <img src="images/uop-logo.png" alt="University of Peradeniya logo" onerror="this.parentElement.classList.add('is-empty');this.remove()">
+          <span class="logo-fallback">UoP</span>
+        </span>
+        <span class="logo-slot team">
+          <img src="images/team-logo.png" alt="Optimum Racing team logo" onerror="this.parentElement.classList.add('is-empty');this.remove()">
+          <span class="logo-fallback">Team logo</span>
+        </span>
+      </div>
+      <ul class="social" aria-label="Social media">
           <li>
             <a class="instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)">
               <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg>
@@ -70,6 +63,40 @@
             </a>
           </li>
         </ul>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-heading">
+      <div class="contact-details">
+        <h1 id="contact-heading">Contact us</h1>
+        <p>Questions about the team, the car or a competition? Write to us and we will reply.</p>
+
+        <!-- Replace the email and phone with the team's real ones. -->
+        <dl class="facts contact-info">
+          <div>
+            <dt>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Phone
+            </dt>
+            <dd><a href="tel:+94000000000">+94 00 000 0000</a></dd>
+          </div>
+          <div>
+            <dt>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              Email
+            </dt>
+            <dd><a href="mailto:optimumracing@example.com">optimumracing@example.com</a></dd>
+          </div>
+          <div>
+            <dt>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Address
+            </dt>
+            <dd>
+              Faculty of Engineering, University of Peradeniya, Prof. E.O.E. Pereira Mawatha, Peradeniya 20400, Sri Lanka<br>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Faculty+of+Engineering+University+of+Peradeniya" target="_blank" rel="noopener noreferrer">View the UoP Faculty of Engineering on Google Maps</a>
+            </dd>
+          </div>
+        </dl>
       </div>
 
       <form class="contact-form" data-mailto="optimumracing@example.com">
