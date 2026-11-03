@@ -113,45 +113,75 @@ main {
 
 .hero {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
-  padding: clamp(1.5rem, 5vw, 3.5rem) 0;
+  padding: clamp(1rem, 4vw, 3rem) 0;
 }
 
-.hero-visual {
+/* The car sits straight on the page: no box, just a ground shadow. */
+.hero-car {
   position: relative;
-  margin: 0;
-  aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, var(--surface), #0b141c);
-  border-left: 8px solid var(--signal);
-  overflow: hidden;
-  display: grid;
-  place-items: center;
+  padding-bottom: 1.5rem;
 }
 
-.hero-visual figcaption {
-  padding: 1rem;
-  color: var(--muted);
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-.hero-visual img {
+.hero-car::after {
+  content: "";
   position: absolute;
-  inset: 0;
+  left: 8%;
+  right: 8%;
+  bottom: 0.5rem;
+  height: 2.25rem;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55), transparent 70%);
+  z-index: 0;
+}
+
+.hero-car img {
+  position: relative;
+  z-index: 1;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  filter: drop-shadow(0 0 28px rgba(255, 60, 40, 0.22));
 }
 
-.hero-text { display: grid; gap: 1.25rem; justify-items: start; }
-
-.hero-text h1 {
-  font-size: clamp(2.75rem, 7vw, 4.75rem);
+/* ---------- Link cards (right of the car) ---------- */
+.link-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.hero-text p { color: var(--muted); }
+.link-card {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border-left: 5px solid var(--line);
+  text-decoration: none;
+}
+
+.link-card:hover { border-left-color: var(--signal); }
+
+.link-card h2 { font-size: 1.75rem; }
+.link-card p { color: var(--muted); font-size: 0.975rem; }
+
+/* ---------- Intro (under the car) ---------- */
+.intro {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: end;
+  padding: clamp(1.5rem, 4vw, 3rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.intro h1 { font-size: clamp(2.75rem, 7vw, 4.75rem); }
+
+.intro-text { display: grid; gap: 1.25rem; justify-items: start; }
+.intro-text p { color: var(--muted); }
 
 .button {
   display: inline-block;
@@ -163,41 +193,6 @@ main {
 }
 
 .button:hover { background: #ffd83d; }
-
-/* ---------- Link cards ---------- */
-.links {
-  padding: clamp(1.5rem, 4vw, 3rem) 0 clamp(2.5rem, 6vw, 4.5rem);
-  border-top: 1px solid var(--line);
-}
-
-.links h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin-bottom: 1.5rem;
-}
-
-.link-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.link-card {
-  display: grid;
-  gap: 0.5rem;
-  height: 100%;
-  padding: 1.5rem;
-  background: var(--surface);
-  border-top: 4px solid var(--line);
-  text-decoration: none;
-}
-
-.link-card:hover { border-top-color: var(--signal); }
-
-.link-card h3 { font-size: 1.75rem; }
-.link-card p { color: var(--muted); font-size: 1rem; }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -211,6 +206,6 @@ main {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 52rem) {
-  .hero { grid-template-columns: 1fr; }
-  .link-list { grid-template-columns: 1fr; }
+  .hero,
+  .intro { grid-template-columns: 1fr; }
 }
