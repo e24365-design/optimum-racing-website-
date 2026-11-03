@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Info | Optimum Racing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slate-blue: #0f172a;
+            --slate-blue-light: #1e293b;
+            --pitlane-yellow: #ffcc00;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--slate-blue);
+            color: var(--text-light);
+            font-family: 'Figtree', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Big Shoulders Display', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--slate-blue-light);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .uop-badge {
+            background-color: var(--pitlane-yellow);
+            color: var(--slate-blue);
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--pitlane-yellow);
+        }
+
+        /* Yellow line below current tab */
+        nav a.active {
+            border-bottom: 3px solid var(--pitlane-yellow);
+            color: var(--text-light);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5%;
+        }
+
+        /* Hero Image Placeholder */
+        .team-hero {
+            width: 100%;
+            height: auto;
+            border-left: 8px solid var(--pitlane-yellow);
+            margin-bottom: 50px;
+        }
+
+        .team-hero img {
+            width: 100%;
+            display: block;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--slate-blue-light);
+            padding-bottom: 10px;
+        }
+
+        /* Profile Cards General */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .profile-card {
+            display: flex;
+            gap: 30px;
+            background-color: var(--slate-blue-light);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--pitlane-yellow);
+            align-items: center;
+        }
+
+        .profile-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: var(--text-muted);
+        }
+
+        .profile-info h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .profile-info .role {
+            color: var(--pitlane-yellow);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .profile-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 0.9rem;
+            border: 1px solid var(--text-muted);
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .profile-links a:hover {
+            border-color: var(--pitlane-yellow);
+            color: var(--pitlane-yellow);
+        }
+
+        /* Grid for Leads */
+        .leads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Meet the Rest Link */
+        .meet-rest-container {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .meet-rest-link {
+            display: inline-block;
+            background-color: var(--pitlane-yellow);
+            color: var(--slate-blue);
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 1.8rem;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+        .meet-rest-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* Guidance Team */
+        .guidance-card {
+            display: flex;
+            gap: 25px;
+            background-color: transparent;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--slate-blue-light);
+            align-items: flex-start;
+        }
+
+        .guidance-card img {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: var(--text-muted);
+        }
+        
+        .guidance-details h3 {
+            font-size: 1.8rem;
+            color: var(--pitlane-yellow);
+        }
+
+        /* Sponsor Section */
+        .sponsor-section {
+            margin-top: 80px;
+            text-align: center;
+            padding: 40px;
+            background-color: var(--slate-blue-light);
+            border-radius: 8px;
+        }
+
+        .sponsor-logo {
+            width: 200px;
+            height: 80px;
+            background-color: #fff;
+            margin: 20px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-blue);
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="uop-badge">UoP</div>
+            <div class="site-title">Optimum Racing</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <!-- The .active class adds the yellow underline to the current tab -->
+                <li><a href="team.html" class="active">Team Info</a></li>
+                <li><a href="competitions.html">Competition Info</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <!-- Main Hero Image -->
+        <div class="team-hero">
+            <!-- Replace src with your generated AI placeholder image -->
+            <img src="images/team-placeholder.jpg" alt="10 people standing near a formula racing car">
+        </div>
+
+        <!-- Team Captain -->
+        <h2 class="section-title">Leadership</h2>
+        <div class="profile-container">
+            <div class="profile-card">
+                <img src="images/captain.jpg" alt="Team Captain">
+                <div class="profile-info">
+                    <h3>John Doe</h3>
+                    <span class="role">Team Captain</span>
+                    <p>Leading the development and strategy for this year's Optimum Racing vehicle. Responsible for overall project management and team integration.</p>
+                    <br>
+                    <div class="profile-links">
+                        <a href="mailto:captain.fake@eng.pdn.ac.lk">Email</a>
+                        <a href="https://linkedin.com/in/fake-link" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Leads -->
+        <h2 class="section-title">Team Leads</h2>
+        <div class="leads-grid">
+            <div class="profile-card">
+                <img src="images/lead1.jpg" alt="Lead">
+                <div class="profile-info">
+                    <h3>Jane Smith</h3>
+                    <span class="role">Chief Engineer</span>
+                    <div class="profile-links">
+                        <a href="mailto:jane.fake@eng.pdn.ac.lk">Email</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-card">
+                <img src="images/lead2.jpg" alt="Lead">
+                <div class="profile-info">
+                    <h3>Alex Johnson</h3>
+                    <span class="role">Head of Aerodynamics</span>
+                    <div class="profile-links">
+                        <a href="mailto:alex.fake@eng.pdn.ac.lk">Email</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Link to Full Roster -->
+        <div class="meet-rest-container">
+            <a href="full-team.html" class="meet-rest-link">MEET THE REST OF THE TEAM</a>
+        </div>
+
+        <!-- Guidance Team -->
+        <h2 class="section-title">Guidance Team</h2>
+        <div class="profile-container">
+            
+            <div class="guidance-card">
+                <img src="images/prof1.jpg" alt="Professor">
+                <div class="guidance-details">
+                    <h3>Prof. A. B. Perera</h3>
+                    <p><strong>Department of Mechanical Engineering</strong></p>
+                    <p>Faculty Advisor. Providing extensive expertise in vehicle dynamics and thermodynamics to ensure optimal track performance.</p>
+                </div>
+            </div>
+
+            <div class="guidance-card">
+                <img src="images/prof2.jpg" alt="Professor">
+                <div class="guidance-details">
+                    <h3>Dr. S. K. Silva</h3>
+                    <p><strong>Department of Electrical Engineering</strong></p>
+                    <p>Technical Advisor. Overseeing the electrical powertrain design and telemetry systems for real-time race data analysis.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sponsors -->
+        <div class="sponsor-section">
+            <h2 class="section-title" style="border: none; margin-bottom: 10px;">Primary Sponsor</h2>
+            <p>Thank you to our partners for making this project possible.</p>
+            <div class="sponsor-logo">
+                [ SPONSOR LOGO ]
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
