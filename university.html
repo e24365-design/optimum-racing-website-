@@ -1,108 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The University | Optimum Racing</title>
-  <meta name="description" content="About the Faculty of Engineering, University of Peradeniya: facts, departments and history.">
-  <meta name="theme-color" content="#0b141d">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add('js');</script>
-  <script src="js/main.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The University | Optimum Racing</title>
+<meta name="description" content="About the Faculty of Engineering, University of Peradeniya: facts, departments and history.">
+<meta name="theme-color" content="#0b141d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/pages.css">
+<script>document.documentElement.classList.add('js','rv-on');setTimeout(function(){if(!window.__rvLoaded)document.documentElement.classList.remove('rv-on')},3000);</script>
+<script src="js/main.js" defer></script>
+<script src="js/pages.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="progress" aria-hidden="true"></div>
-  <div class="site-header-wrap">
-    <header class="site-header">
-      <a class="brand" href="index.html">
-        <span class="brand-mark" aria-hidden="true">UoP</span>
-        <span class="brand-name">Optimum Racing</span>
-      </a>
-      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
-      <nav class="site-nav" id="site-nav" aria-label="Main">
-        <ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="university.html" aria-current="page">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
-      </nav>
-    </header>
-  </div>
-
-  <main id="main">
-
-    <section class="faculty-hero reveal" aria-labelledby="uni-h">
-      <img src="images/faculty.jpeg" alt="The Faculty of Engineering at the University of Peradeniya" fetchpriority="high">
-      <div class="faculty-hero-text">
-        <h2 id="uni-h">Faculty of Engineering, University of Peradeniya</h2>
-        <p>The first engineering faculty in Sri Lanka, founded in 1950.</p>
-      </div>
-    </section>
-
-    <section class="stats reveal" style="margin-top:2rem" aria-label="Faculty in numbers">
-      <div class="stat"><strong><span data-count="1950">0</span></strong><span>Year founded</span></div>
-      <div class="stat"><strong><span data-count="2200">0</span><sup>+</sup></strong><span>Students</span></div>
-      <div class="stat"><strong><span data-count="100">0</span><sup>+</sup></strong><span>Academic staff with doctorates</span></div>
-      <div class="stat"><strong><span data-count="8">0</span></strong><span>Departments</span></div>
-    </section>
-
-    <section class="section about" aria-labelledby="about-heading" style="margin-top:2rem">
-      <div class="reveal from-left">
-        <h2 id="about-heading">About the faculty</h2>
-        <p>The Faculty of Engineering is part of the University of Peradeniya in Peradeniya, Sri Lanka. It opened in 1950 as the country's first engineering faculty and has been on its current campus since 1964.</p>
-        <p>The faculty has eight departments and offers the Bachelor of the Science of Engineering Honours degree in six specializations. Optimum Racing is the university's Formula Student team.</p>
-      </div>
-      <dl class="facts reveal from-right">
-        <div><dt>Founded</dt><dd>1 July 1950, in Colombo</dd></div>
-        <div><dt>At Peradeniya since</dt><dd>1964</dd></div>
-        <div><dt>Students</dt><dd>Around 2,200, undergraduate and postgraduate</dd></div>
-        <div><dt>Academic staff</dt><dd>Over 100 with doctoral qualifications</dd></div>
-        <div><dt>Address</dt><dd>Faculty of Engineering, University of Peradeniya, Prof. E.O.E. Pereira Mawatha, Peradeniya 20400, Sri Lanka</dd></div>
-        <div><dt>Website</dt><dd><a href="https://eng.pdn.ac.lk/" rel="noopener">eng.pdn.ac.lk</a></dd></div>
-      </dl>
-    </section>
-
-    <section class="section" aria-labelledby="dept-heading">
-      <div class="section-head"><h2 id="dept-heading" class="reveal">Departments</h2></div>
-      <div class="tabs" role="tablist" aria-label="Department type">
-        <button class="tab" role="tab" id="t-deg" aria-controls="p-deg" aria-selected="true">Degree-offering</button>
-        <button class="tab" role="tab" id="t-sup" aria-controls="p-sup" aria-selected="false">Supporting</button>
-      </div>
-      <div class="tab-panel" id="p-deg" role="tabpanel" aria-labelledby="t-deg">
-        <ul class="dept-grid">
-          <li>Chemical and Process Engineering</li><li>Civil Engineering</li><li>Computer Engineering</li>
-          <li>Electrical and Electronic Engineering</li><li>Manufacturing and Industrial Engineering</li><li>Mechanical Engineering</li>
-        </ul>
-      </div>
-      <div class="tab-panel" id="p-sup" role="tabpanel" aria-labelledby="t-sup" hidden>
-        <ul class="dept-grid"><li>Engineering Mathematics</li><li>Engineering Management</li></ul>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="history-heading">
-      <div class="section-head"><h2 id="history-heading" class="reveal">A short history</h2></div>
-      <ol class="timeline">
-        <span class="fill" aria-hidden="true"></span>
-        <li><span class="year">1942</span><div><h3>The University of Ceylon is founded</h3><p>Sri Lanka's first university opens. The University of Peradeniya grew out of it.</p></div></li>
-        <li><span class="year">1950</span><div><h3>The faculty opens in Colombo</h3><p>On 1 July, the University of Ceylon starts its Faculty of Engineering, the first in the country. Prof. E.O.E. Pereira is entrusted with setting it up. Civil, Electrical and Mechanical Engineering are the founding departments.</p></div></li>
-        <li><span class="year">1953 to 1964</span><div><h3>Years in temporary buildings</h3><p>Teaching continues in temporary buildings at Thurstan Road in Colombo while the permanent campus is planned.</p></div></li>
-        <li><span class="year">1964</span><div><h3>The move to Peradeniya</h3><p>The faculty moves into its permanent home at Peradeniya, where it still stands today.</p></div></li>
-        <li><span class="year">1978</span><div><h3>The present name</h3><p>After the University of Sri Lanka is dissolved, the faculty returns to the name Faculty of Engineering, University of Peradeniya.</p></div></li>
-        <li><span class="year">2025</span><div><h3>75 years of engineering education</h3><p>The faculty celebrates its Diamond Jubilee.</p></div></li>
-      </ol>
-    </section>
-
-    <section class="cta reveal" aria-labelledby="cta-heading">
-      <h2 id="cta-heading">Meet the people building the car</h2>
-      <a class="button" href="team.html">See the team</a>
-    </section>
-  </main>
-
-  <div class="checker" aria-hidden="true"></div>
-  <footer class="site-footer">
-    <p>Concept website designed for the Optimum Racing recruitment task. Not the official team site. All people, sponsors and results shown are fictional placeholders.</p>
-    <ul><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
-  </footer>
-  <button class="to-top" aria-label="Back to top">↑</button>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="site-header-wrap">
+<header class="site-header">
+<a class="brand" href="index.html">
+<span class="brand-mark" aria-hidden="true">UoP</span>
+<span class="brand-name">Optimum Racing</span>
+</a>
+<button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+<nav class="site-nav" id="site-nav" aria-label="Main">
+<ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="university.html" aria-current="page">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
+</nav>
+</header>
+</div>
+<main id="main">
+<section class="faculty-hero rv rv-zoom" aria-labelledby="uni-h">
+<img src="images/faculty.jpeg" alt="The Faculty of Engineering at the University of Peradeniya" fetchpriority="high">
+<div class="faculty-hero-text">
+<h2 id="uni-h">Faculty of Engineering, University of Peradeniya</h2>
+<p>The first engineering faculty in Sri Lanka, founded in 1950.</p>
+</div>
+</section>
+<section class="stats rv" style="margin-top:2rem" aria-label="Faculty in numbers">
+<div class="stat"><strong><span data-grow="1950" data-from="1850">1950</span></strong><span>Year founded</span></div>
+<div class="stat"><strong><span data-grow="2200" data-sep>2,200</span><sup>+</sup></strong><span>Students</span></div>
+<div class="stat"><strong><span data-grow="100">100</span><sup>+</sup></strong><span>Academic staff with doctorates</span></div>
+<div class="stat"><strong><span data-grow="8">8</span></strong><span>Departments</span></div>
+</section>
+<section class="section about" aria-labelledby="about-heading" style="margin-top:2rem">
+<div>
+<h2 id="about-heading" class="rv rv-left">About the faculty</h2>
+<p class="rv rv-right" data-d="0.15">The Faculty of Engineering is part of the University of Peradeniya in Peradeniya, Sri Lanka. It opened in 1950 as the country's first engineering faculty and has been on its current campus since 1964.</p>
+<p class="rv rv-left rv-strong" data-d="0.35">The faculty has eight departments and offers the Bachelor of the Science of Engineering Honours degree in six specializations. Optimum Racing is the university's Formula Student team.</p>
+</div>
+<dl class="facts">
+<div class="rv rv-right" data-d="0.05"><dt>Founded</dt><dd>1 July 1950, in Colombo</dd></div>
+<div class="rv rv-right" data-d="0.15"><dt>At Peradeniya since</dt><dd>1964</dd></div>
+<div class="rv rv-right" data-d="0.25"><dt>Students</dt><dd>Around 2,200, undergraduate and postgraduate</dd></div>
+<div class="rv rv-right" data-d="0.35"><dt>Academic staff</dt><dd>Over 100 with doctoral qualifications</dd></div>
+<div class="rv rv-right" data-d="0.45"><dt>Address</dt><dd>Faculty of Engineering, University of Peradeniya, Prof. E.O.E. Pereira Mawatha, Peradeniya 20400, Sri Lanka</dd></div>
+<div class="rv rv-right" data-d="0.55"><dt>Website</dt><dd><a href="https://eng.pdn.ac.lk/" rel="noopener">eng.pdn.ac.lk</a></dd></div>
+</dl>
+</section>
+<section class="section" aria-labelledby="dept-heading">
+<div class="section-head"><h2 id="dept-heading" class="rv rv-left">Departments</h2></div>
+<div class="tabs" role="tablist" aria-label="Department type">
+<button class="tab" role="tab" id="t-deg" aria-controls="p-deg" aria-selected="true">Degree-offering</button>
+<button class="tab" role="tab" id="t-sup" aria-controls="p-sup" aria-selected="false">Supporting</button>
+</div>
+<div class="tab-panel" id="p-deg" role="tabpanel" aria-labelledby="t-deg">
+<ul class="dept-grid">
+<li>Chemical and Process Engineering</li><li>Civil Engineering</li><li>Computer Engineering</li>
+<li>Electrical and Electronic Engineering</li><li>Manufacturing and Industrial Engineering</li><li>Mechanical Engineering</li>
+</ul>
+</div>
+<div class="tab-panel" id="p-sup" role="tabpanel" aria-labelledby="t-sup" hidden>
+<ul class="dept-grid"><li>Engineering Mathematics</li><li>Engineering Management</li></ul>
+</div>
+</section>
+<section class="section" aria-labelledby="history-heading">
+<div class="section-head"><h2 id="history-heading" class="rv rv-left">A short history</h2></div>
+<ol class="tl" aria-label="History of the faculty">
+<li class="tl-item"><span class="tl-year">1942</span><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>The University of Ceylon is founded</h3><p>Sri Lanka's first university opens. The University of Peradeniya grew out of it.</p></div></li>
+<li class="tl-item"><span class="tl-year">1950</span><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>The faculty opens in Colombo</h3><p>On 1 July, the University of Ceylon starts its Faculty of Engineering, the first in the country. Prof. E.O.E. Pereira is entrusted with setting it up. Civil, Electrical and Mechanical Engineering are the founding departments.</p></div></li>
+<li class="tl-item"><span class="tl-year">1953 to 1964</span><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>Years in temporary buildings</h3><p>Teaching continues in temporary buildings at Thurstan Road in Colombo while the permanent campus is planned.</p></div></li>
+<li class="tl-item"><span class="tl-year">1964</span><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>The move to Peradeniya</h3><p>The faculty moves into its permanent home at Peradeniya, where it still stands today.</p></div></li>
+<li class="tl-item"><span class="tl-year">1978</span><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>The present name</h3><p>After the University of Sri Lanka is dissolved, the faculty returns to the name Faculty of Engineering, University of Peradeniya.</p></div></li>
+<li class="tl-item"><span class="tl-year">2025</span><span class="tl-dot" aria-hidden="true"></span><div class="tl-body"><h3>75 years of engineering education</h3><p>The faculty celebrates its Diamond Jubilee.</p></div></li>
+</ol>
+</section>
+<section class="cta rv rv-zoom" aria-labelledby="cta-heading">
+<h2 id="cta-heading">Meet the people building the car</h2>
+<a class="button" href="team.html">See the team</a>
+</section>
+</main>
+<div class="checker" aria-hidden="true"></div>
+<footer class="site-footer">
+<p>Concept website designed for the Optimum Racing recruitment task. Not the official team site. All people, sponsors and results shown are fictional placeholders.</p>
+<ul><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
+</footer>
+<button class="to-top" aria-label="Back to top">↑</button>
 </body>
 </html>
