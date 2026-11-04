@@ -1,0 +1,299 @@
+/* Optimum Racing: The Car + Competitions page upgrades.
+   Load AFTER the main stylesheet (style.css). Pairs with js/car-competition.js */
+
+:root { --cc-ease: cubic-bezier(.2, .75, .2, 1); }
+
+/* =====================================================================
+   THE CAR PAGE
+   ===================================================================== */
+
+/* ---------- 1. Build phases: one by one, with a huge gap between ---------- */
+.phase-stack { display: block; }
+
+.phase {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+  align-items: center;
+  min-height: min(72vh, 40rem);
+}
+.phase + .phase { margin-top: clamp(7rem, 26vh, 15rem); }          /* the huge space */
+.phase.rev .phase-media { order: 2; }
+
+.phase-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 14px 14px 0 -2px rgba(255, 199, 0, .16), 0 24px 60px rgba(0, 0, 0, .45);
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
+}
+.phase.rev .phase-media { box-shadow: -14px 14px 0 -2px rgba(255, 199, 0, .16), 0 24px 60px rgba(0, 0, 0, .45); }
+.phase-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.phase-tag {
+  position: absolute; left: 0; top: 0; padding: .45rem 1rem;
+  background: var(--signal); color: var(--on-signal);
+  font-family: var(--font-display); font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+}
+
+.phase-copy { position: relative; display: grid; gap: .9rem; align-content: center; }
+.phase-num {
+  font-family: var(--font-display); font-weight: 800; line-height: .8;
+  font-size: clamp(6rem, 17vw, 12rem);
+  color: transparent; -webkit-text-stroke: 2px rgba(255, 199, 0, .55);
+  user-select: none;
+}
+.phase-copy h3 { font-size: clamp(2.1rem, 4.6vw, 3.3rem); text-transform: uppercase; }
+.phase-copy p { color: var(--muted); font-size: 1.12rem; max-width: 46ch; }
+.phase-bar { width: 5rem; height: 4px; background: var(--signal); transform-origin: left; }
+
+/* scroll animation (only when JS runs) */
+.js .phase .phase-media { opacity: 0; transform: translateX(-90px) scale(.93); transition: opacity .9s var(--cc-ease), transform 1s var(--cc-ease); }
+.js .phase.rev .phase-media { transform: translateX(90px) scale(.93); }
+.js .phase .phase-copy > * { opacity: 0; transform: translateX(70px); transition: opacity .8s var(--cc-ease), transform .9s var(--cc-ease); }
+.js .phase.rev .phase-copy > * { transform: translateX(-70px); }
+.js .phase .phase-bar { transform: scaleX(0); opacity: 1; transition: transform .9s var(--cc-ease) .7s; }
+.js .phase.in .phase-media { opacity: 1; transform: none; }
+.js .phase.in .phase-copy > * { opacity: 1; transform: none; }
+.js .phase.in .phase-bar { transform: scaleX(1); }
+.js .phase.in .phase-copy > :nth-child(1) { transition-delay: .15s; }
+.js .phase.in .phase-copy > :nth-child(2) { transition-delay: .3s; }
+.js .phase.in .phase-copy > :nth-child(3) { transition-delay: .45s; }
+.js .phase.in .phase-copy > :nth-child(4) { transition-delay: .55s; }
+
+@media (max-width: 52rem) {
+  .phase { grid-template-columns: 1fr; min-height: 0; }
+  .phase.rev .phase-media { order: 0; }
+  .phase + .phase { margin-top: clamp(5rem, 18vh, 8rem); }
+  .phase-num { font-size: 6rem; }
+}
+
+/* ---------- 2. Car + clickable points ---------- */
+.interactive { grid-template-columns: 1fr; }
+.car-stage {
+  position: relative; min-height: 37rem; padding: 0;
+  display: grid; place-items: center;
+}
+.car-img-wrap { max-width: 44rem; margin: 3rem auto; }
+.car-stage .pt {
+  position: absolute; z-index: 3; width: 2.4rem; height: 2.4rem; margin: -1.2rem 0 0 -1.2rem;
+  display: grid; place-items: center; padding: 0; cursor: pointer;
+  border-radius: 50%; border: 3px solid #fff;
+  background: var(--signal); color: var(--on-signal);
+  font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; line-height: 1;
+  box-shadow: 0 0 0 4px rgba(255, 199, 0, .35), 0 0 22px rgba(255, 199, 0, .9), 0 4px 10px rgba(0, 0, 0, .6);
+  transition: transform .25s var(--cc-ease), background .25s;
+}
+.car-stage .pt::before, .car-stage .pt::after {
+  content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--signal);
+  animation: cc-ping 2s ease-out infinite; pointer-events: none;
+}
+.car-stage .pt::after { animation-delay: 1s; }
+@keyframes cc-ping { from { transform: scale(1); opacity: .9; } to { transform: scale(2.6); opacity: 0; } }
+.car-stage .pt:hover { transform: scale(1.18); }
+.car-stage .pt[aria-expanded="true"] { background: #fff; transform: scale(1.18); box-shadow: 0 0 0 4px var(--signal), 0 0 30px var(--signal); }
+.car-stage .pt[aria-expanded="true"]::before, .car-stage .pt[aria-expanded="true"]::after { animation: none; opacity: 0; }
+
+.pt-pop {
+  position: absolute; z-index: 5; width: min(19rem, calc(100% - 1.5rem));
+  padding: 1.1rem 1.2rem 1.15rem;
+  background: rgba(15, 26, 36, .97); border: 1px solid var(--line); border-top: 4px solid var(--signal);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 199, 0, .12);
+  backdrop-filter: blur(8px);
+  opacity: 0; visibility: hidden; transform: translateY(10px) scale(.96);
+  transition: opacity .28s var(--cc-ease), transform .32s var(--cc-ease), visibility 0s .32s;
+}
+.pt-pop.open { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.pt-pop::after {
+  content: ""; position: absolute; left: var(--ax, 50%); width: 14px; height: 14px; margin-left: -7px;
+  background: rgba(15, 26, 36, 1); border: 1px solid var(--line); transform: rotate(45deg);
+}
+.pt-pop.below::after { top: -9px; border-right: 0; border-bottom: 0; border-color: var(--signal); }
+.pt-pop.above::after { bottom: -8px; border-left: 0; border-top: 0; }
+.pt-pop .idx { font-family: var(--font-display); color: var(--signal); letter-spacing: .15em; font-size: .95rem; }
+.pt-pop h3 { font-size: 1.55rem; margin: .1rem 0 .5rem; }
+.pt-pop p { color: var(--muted); font-size: .95rem; line-height: 1.5; }
+.pt-pop .mini { margin-top: .8rem; }
+.pt-pop .mini .row { grid-template-columns: 5.2rem 1fr 2.2rem; font-size: .84rem; }
+.pt-close {
+  position: absolute; top: .4rem; right: .4rem; width: 1.9rem; height: 1.9rem; display: grid; place-items: center;
+  background: transparent; border: 1px solid var(--line); color: var(--text); cursor: pointer; font-size: 1rem;
+}
+.pt-close:hover { border-color: var(--signal); color: var(--signal); }
+.stage-hint {
+  position: absolute; left: 50%; bottom: .9rem; transform: translateX(-50%); z-index: 2; white-space: nowrap;
+  color: var(--muted); font-size: .85rem; letter-spacing: .12em; text-transform: uppercase;
+}
+
+/* ---------- 3. Specifications: small black circles, two side by side ---------- */
+.spec-gauges {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem;
+  max-width: 46rem; margin-inline: auto;
+}
+.gauge {
+  display: flex; align-items: center; gap: 1.2rem; text-align: left; padding: 1rem 1.3rem;
+  background: var(--base-2); border: 1px solid var(--line); border-left: 4px solid var(--signal);
+}
+.gauge .ring { position: relative; flex: none; width: 6.2rem; height: 6.2rem; }
+.gauge .ring::before {                                   /* the black disc */
+  content: ""; position: absolute; inset: 6px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #1b232d, #04070a 72%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06);
+}
+.gauge .ring svg { position: relative; width: 100%; height: 100%; transform: rotate(-90deg); }
+.gauge .ring circle { stroke-width: 7; }
+.gauge .num {
+  position: absolute; inset: 0; margin: 0; height: auto; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem;
+  font-size: 1.75rem; line-height: 1;
+}
+.gauge .num small { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; line-height: 1; }
+.gauge > p { margin: 0; color: var(--text); font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: .04em; max-width: none; }
+.gauge > p small { display: block; margin-top: .15rem; color: var(--muted); font-family: var(--font-body); font-weight: 400; font-size: .82rem; letter-spacing: 0; }
+
+@media (max-width: 34rem) {
+  .spec-gauges { gap: .6rem; }
+  .gauge { flex-direction: column; text-align: center; gap: .5rem; padding: .9rem .5rem; border-left-width: 1px; border-top: 4px solid var(--signal); }
+  .gauge .ring { width: 5.2rem; height: 5.2rem; }
+  .gauge .num { font-size: 1.45rem; }
+  .gauge > p { font-size: 1.1rem; }
+}
+
+/* ---------- 4. Launch control mini game: clearly visible ---------- */
+.game { max-width: 46rem; margin-inline: auto; border-top: 5px solid var(--signal); opacity: 1 !important; transform: none !important; }
+.game .lights {
+  width: fit-content; margin-inline: auto; padding: .9rem 1.3rem; gap: clamp(.5rem, 2vw, .9rem);
+  background: #05080c; border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: inset 0 0 22px rgba(0, 0, 0, .8), 0 6px 20px rgba(0, 0, 0, .4);
+}
+.game .lights i { background: #3b161b; border: 3px solid #7a3039; box-shadow: inset 0 3px 8px rgba(0, 0, 0, .7); }
+.game .lights i.on { background: #ff2a3c; border-color: #ff7a85; box-shadow: 0 0 24px 4px rgba(255, 42, 60, .85), inset 0 0 8px rgba(255, 255, 255, .4); }
+.game .lights.go i { background: #22c55e; border-color: #86efac; box-shadow: 0 0 24px 4px rgba(34, 197, 94, .85), inset 0 0 8px rgba(255, 255, 255, .4); }
+.game .readout { padding: .5rem 0; }
+.game .btns .button { border: 0; font: inherit; font-weight: 800; font-size: 1.15rem; letter-spacing: .1em; padding: 1rem 2.6rem; cursor: pointer; }
+.game .leader { border-top: 1px solid var(--line); padding-top: .9rem; }
+
+/* ---------- 5. Sponsors: room between name and title ---------- */
+.sponsor { gap: .85rem; padding: 2.2rem 1rem; }
+.sponsor b { line-height: 1.15; margin-bottom: .15rem; }
+.sponsor span { margin-top: .1rem; }
+
+/* =====================================================================
+   COMPETITIONS PAGE
+   ===================================================================== */
+
+.event-box { grid-template-columns: 1.05fr 1.2fr; }
+.clock-wrap { position: relative; padding-top: 4.8rem; }
+
+/* mini car attached to the clock, spins on arrival */
+.clock-car {
+  position: absolute; z-index: 3; top: 0; right: 1.2rem; width: clamp(8rem, 15vw, 11rem);
+  perspective: 700px; cursor: pointer;
+}
+.clock-car img {
+  display: block; width: 100%; height: auto; transform-origin: 50% 60%;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .55)) drop-shadow(0 0 16px rgba(225, 29, 46, .3));
+}
+.clock-car::after {                                          /* ground shadow */
+  content: ""; position: absolute; left: 10%; right: 10%; bottom: -.55rem; height: .7rem;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, .65), transparent 70%);
+}
+.clock-car.spin img { animation: cc-spin 2.1s cubic-bezier(.2, .8, .25, 1) both; }
+.clock-car:not(.spin) img { animation: cc-idle 3.2s ease-in-out infinite; }
+@keyframes cc-spin {
+  0%   { transform: rotateY(0) scale(.55); opacity: 0; }
+  12%  { opacity: 1; }
+  100% { transform: rotateY(1080deg) scale(1); opacity: 1; }
+}
+@keyframes cc-idle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+/* ticking digital clock */
+.digital-clock {
+  display: flex; align-items: flex-start; justify-content: center; gap: clamp(.25rem, 1vw, .6rem);
+  padding: 1.1rem clamp(.7rem, 2vw, 1.3rem) .9rem;
+  background: linear-gradient(180deg, #0a0f15, #04070a);
+  border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, .85), 0 0 0 4px #101a24, 0 14px 34px rgba(0, 0, 0, .5);
+  font-family: "Orbitron", "Share Tech Mono", ui-monospace, "Courier New", monospace;
+}
+.digital-clock .unit { display: grid; justify-items: center; gap: .55rem; }
+.digital-clock .digits { display: flex; gap: .22rem; perspective: 400px; }
+.digital-clock .dg {
+  position: relative; display: grid; place-items: center;
+  width: clamp(1.9rem, 4.4vw, 2.7rem); height: clamp(2.8rem, 6.2vw, 3.9rem);
+  font-weight: 900; font-size: clamp(1.7rem, 3.8vw, 2.5rem); line-height: 1; font-variant-numeric: tabular-nums;
+  color: var(--signal); text-shadow: 0 0 10px rgba(255, 199, 0, .75), 0 0 26px rgba(255, 199, 0, .35);
+  background: linear-gradient(180deg, #1a232d 0%, #0d141b 49%, #05080c 51%, #0b1117 100%);
+  border: 1px solid #243445; border-radius: 6px; overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+.digital-clock .dg::before {                                /* centre split */
+  content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px;
+  background: #000; box-shadow: 0 1px 0 rgba(255, 255, 255, .06);
+}
+.digital-clock .dg::after {                                 /* glass shine */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 46%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .1), transparent);
+  pointer-events: none;
+}
+.digital-clock .dg.flip { animation: cc-flip .5s cubic-bezier(.3, .9, .3, 1); }
+@keyframes cc-flip {
+  0%   { transform: rotateX(-90deg); opacity: .2; filter: brightness(1.8); }
+  100% { transform: none; opacity: 1; filter: none; }
+}
+.digital-clock .colon {
+  align-self: flex-start; display: flex; flex-direction: column; gap: .55rem; justify-content: center;
+  height: clamp(2.8rem, 6.2vw, 3.9rem); animation: cc-blink 1s steps(1) infinite;
+}
+.digital-clock .colon::before, .digital-clock .colon::after {
+  content: ""; width: .32rem; height: .32rem; border-radius: 50%;
+  background: var(--signal); box-shadow: 0 0 8px var(--signal);
+}
+@keyframes cc-blink { 0%, 100% { opacity: 1; } 50% { opacity: .15; } }
+.digital-clock label {
+  color: var(--muted); font-family: var(--font-body); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+}
+.clock-status {
+  display: flex; align-items: center; justify-content: center; gap: .5rem; margin-top: .8rem;
+  color: var(--muted); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
+}
+.clock-status i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: cc-blink 1s steps(1) infinite; }
+
+@media (max-width: 52rem) {
+  .event-box { grid-template-columns: 1fr; }
+  .clock-wrap { padding-top: 5rem; }
+  .clock-car { right: 50%; transform: translateX(50%); }
+}
+@media (max-width: 30rem) {
+  .digital-clock { padding-inline: .45rem; gap: .15rem; }
+  .digital-clock .digits { gap: .12rem; }
+}
+
+/* orange car in the corner of "Points by event" */
+.scores { position: relative; overflow: hidden; }
+.scores h4 { min-height: 4.6rem; padding-right: 13rem; }
+.scores .corner-car {
+  position: absolute; top: 0; right: 0; width: 13rem; height: 5.2rem; max-width: none;
+  object-fit: cover; object-position: 45% 55%;
+  clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+  animation: cc-slide .9s var(--cc-ease) .1s both;     /* replays each time a year tab is shown */
+}
+@keyframes cc-slide { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: none; } }
+.scores::after {                                             /* yellow slash behind the picture edge */
+  content: ""; position: absolute; top: 0; right: 13rem; width: 3px; height: 5.2rem; background: var(--signal);
+  transform: skewX(-24deg) translateX(.9rem); transform-origin: top; pointer-events: none;
+}
+@media (max-width: 30rem) {
+  .scores h4 { padding-right: 8.5rem; }
+  .scores .corner-car { width: 8.5rem; height: 4.2rem; }
+  .scores::after { right: 8.5rem; height: 4.2rem; }
+}
+
+/* ---------- accessibility: no motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .js .phase .phase-media, .js .phase .phase-copy > *, .js .phase .phase-bar { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .clock-car.spin img, .clock-car:not(.spin) img, .car-stage .pt::before, .car-stage .pt::after,
+  .digital-clock .dg.flip, .digital-clock .colon, .clock-status i { animation: none !important; }
+  .scores .corner-car { animation: none; }
+}

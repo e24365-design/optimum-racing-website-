@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/car-competition.css">
   <script>document.documentElement.classList.add('js');</script>
   <script src="js/main.js" defer></script>
+  <script src="js/car-competition.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -34,39 +36,48 @@
 
     <section class="section" style="border-top:0" aria-labelledby="h1">
       <div class="section-head"><div><span class="eyebrow">Build story</span><h2 id="h1">Building history</h2></div></div>
-      <div class="phase-grid reveal">
-        <div class="phase-nav" role="tablist" aria-label="Build phases"><button type="button" role="tab" aria-selected="false" data-img="images/gallery/g3.svg" data-step="Phase 01" data-title="CAD &amp; Aerodynamic Simulation" data-text="Engineered entirely from scratch. CFD simulations were performed to optimize downforce while maintaining low drag coefficients."><small>Phase 01</small><b>CAD &amp; Aerodynamic Simulation</b></button><button type="button" role="tab" aria-selected="false" data-img="images/gallery/g5.svg" data-step="Phase 02" data-title="Chassis &amp; Frame Assembly" data-text="Precision jigging and TIG welding of the steel spaceframe, maximizing torsional rigidity and driver safety compliance."><small>Phase 02</small><b>Chassis &amp; Frame Assembly</b></button><button type="button" role="tab" aria-selected="false" data-img="images/gallery/g1.svg" data-step="Phase 03" data-title="Track Calibration &amp; Tuning" data-text="Extensive track validation to tune suspension geometry, telemetry sensors, and engine ECU parameters prior to competition."><small>Phase 03</small><b>Track Calibration &amp; Tuning</b></button></div>
-        <div class="phase-panel"><img id="phase-img" src="" alt=""><div class="txt" id="phase-txt"><small class="step eyebrow"></small><h3></h3><p></p><div class="progress-dots" aria-hidden="true"><i></i><i></i><i></i></div></div></div>
+      <div class="phase-stack">
+        <article class="phase" aria-label="Phase 01: CAD & Aerodynamic Simulation">
+          <div class="phase-media"><img src="g3.svg" alt="CAD & Aerodynamic Simulation" loading="lazy"><span class="phase-tag">Phase 01</span></div>
+          <div class="phase-copy"><div class="phase-num" aria-hidden="true">01</div><h3>CAD &amp; Aerodynamic Simulation</h3><p>Engineered entirely from scratch. CFD simulations were performed to optimize downforce while maintaining low drag coefficients.</p><div class="phase-bar" aria-hidden="true"></div></div>
+        </article>
+        <article class="phase rev" aria-label="Phase 02: Chassis & Frame Assembly">
+          <div class="phase-media"><img src="g5.svg" alt="Chassis & Frame Assembly" loading="lazy"><span class="phase-tag">Phase 02</span></div>
+          <div class="phase-copy"><div class="phase-num" aria-hidden="true">02</div><h3>Chassis &amp; Frame Assembly</h3><p>Precision jigging and TIG welding of the steel spaceframe, maximizing torsional rigidity and driver safety compliance.</p><div class="phase-bar" aria-hidden="true"></div></div>
+        </article>
+        <article class="phase" aria-label="Phase 03: Track Calibration & Tuning">
+          <div class="phase-media"><img src="g1.svg" alt="Track Calibration & Tuning" loading="lazy"><span class="phase-tag">Phase 03</span></div>
+          <div class="phase-copy"><div class="phase-num" aria-hidden="true">03</div><h3>Track Calibration &amp; Tuning</h3><p>Extensive track validation to tune suspension geometry, telemetry sensors, and engine ECU parameters prior to competition.</p><div class="phase-bar" aria-hidden="true"></div></div>
+        </article>
       </div>
     </section>
 
     <section class="section" aria-labelledby="h2">
-      <div class="section-head"><div><span class="eyebrow">Interactive</span><h2 id="h2">The car now</h2></div><p class="lead">Tap a yellow point on the car to inspect it.</p></div>
+      <div class="section-head"><div><span class="eyebrow">Interactive</span><h2 id="h2">The car now</h2></div><p class="lead">Click a glowing point on the car to see what it does.</p></div>
       <div class="interactive reveal">
         <div class="car-stage"><div class="car-img-wrap">
           <img src="images/car.webp" width="568" height="215" alt="Optimum Racing Formula Student car, front three-quarter view">
-          <button class="hotspot" style="left:13%;top:22%" aria-label="Rear wing and powertrain" aria-pressed="false">1</button>
-          <button class="hotspot" style="left:46%;top:30%" aria-label="Cockpit and telemetry" aria-pressed="false">2</button>
-          <button class="hotspot" style="left:41%;top:68%" aria-label="Suspension and braking" aria-pressed="false">3</button>
-          <button class="hotspot" style="left:88%;top:80%" aria-label="Front wing and aerodynamics" aria-pressed="false">4</button>
-        </div></div>
-        <div class="feature-display" id="feature-box" aria-live="polite"><span class="idx"></span><h3></h3><p></p><div class="mini"></div></div>
+          <button type="button" class="pt" style="left:12%;top:20%" aria-label="Point 1: Rear wing and powertrain">1</button>
+          <button type="button" class="pt" style="left:47%;top:29%" aria-label="Point 2: Cockpit and telemetry">2</button>
+          <button type="button" class="pt" style="left:42%;top:66%" aria-label="Point 3: Suspension and braking">3</button>
+          <button type="button" class="pt" style="left:89%;top:80%" aria-label="Point 4: Front wing and aerodynamics">4</button>
+        </div><span class="stage-hint">Click a point to inspect it</span></div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="h3">
       <div class="section-head"><div><span class="eyebrow">Specifications</span><h2 id="h3">By the numbers</h2></div></div>
       <div class="spec-gauges">
-        <div class="gauge" data-value="3.9" data-max="6" data-decimals="1"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>sec</small></div><p>0–100 km/h</p></div>
-        <div class="gauge" data-value="118" data-max="160" data-decimals="0"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>km/h</small></div><p>Top speed</p></div>
-        <div class="gauge" data-value="196" data-max="300" data-decimals="0"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>kg</small></div><p>Kerb weight</p></div>
-        <div class="gauge" data-value="1.6" data-max="2.5" data-decimals="1"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>g</small></div><p>Lateral grip</p></div>
+        <div class="gauge" data-value="3.9" data-max="6" data-decimals="1"><div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>sec</small></div></div><p>0–100 km/h<small>Acceleration</small></p></div>
+        <div class="gauge" data-value="118" data-max="160" data-decimals="0"><div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>km/h</small></div></div><p>Top speed<small>Straight-line</small></p></div>
+        <div class="gauge" data-value="196" data-max="300" data-decimals="0"><div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>kg</small></div></div><p>Kerb weight<small>Ready to race</small></p></div>
+        <div class="gauge" data-value="1.6" data-max="2.5" data-decimals="1"><div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>g</small></div></div><p>Lateral grip<small>Skidpad peak</small></p></div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="h4">
       <div class="section-head"><div><span class="eyebrow">Mini game</span><h2 id="h4">Launch control</h2></div><p class="lead">Five red lights. When they go out, tap as fast as you can.</p></div>
-      <div class="game reveal">
+      <div class="game">
         <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <div class="readout" aria-live="assertive"><small>Reaction time</small>—</div>
         <div class="btns"><button class="button" id="game-btn" type="button">START</button></div>
