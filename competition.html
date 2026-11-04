@@ -1,406 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competition Info | Optimum Racing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --slate-blue: #0f172a;
-            --slate-blue-light: #1e293b;
-            --pitlane-yellow: #ffcc00;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--slate-blue);
-            color: var(--text-light);
-            font-family: 'Figtree', sans-serif;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Big Shoulders Display', sans-serif;
-            text-transform: uppercase;
-        }
-
-        /* Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: var(--slate-blue-light);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .uop-badge {
-            background-color: var(--pitlane-yellow);
-            color: var(--slate-blue);
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 1.5rem;
-        }
-
-        .site-title {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            padding-bottom: 5px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--pitlane-yellow);
-        }
-
-        nav a.active {
-            border-bottom: 3px solid var(--pitlane-yellow);
-            color: var(--text-light);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 5%;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--slate-blue-light);
-            padding-bottom: 10px;
-        }
-
-        /* Current/Upcoming Competition Section */
-        .live-event-box {
-            background-color: var(--slate-blue-light);
-            border-left: 8px solid var(--pitlane-yellow);
-            padding: 40px;
-            border-radius: 8px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 80px;
-            gap: 30px;
-        }
-
-        .event-details h2 {
-            font-size: 3.5rem;
-            color: var(--text-light);
-            margin-bottom: 10px;
-            line-height: 1.1;
-        }
-
-        .event-details p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .live-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--pitlane-yellow);
-            color: var(--slate-blue);
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 1.8rem;
-            padding: 12px 35px;
-            text-decoration: none;
-            font-weight: 800;
-            border-radius: 4px;
-            transition: transform 0.2s;
-        }
-
-        .live-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* Live Indicator Dot */
-        .live-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #dc2626; /* Red for live */
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-        }
-
-        /* Countdown Timer */
-        .countdown-container {
-            display: flex;
-            gap: 20px;
-            text-align: center;
-        }
-
-        .time-box {
-            background-color: var(--slate-blue);
-            padding: 15px 20px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 204, 0, 0.2);
-            min-width: 90px;
-        }
-
-        .time-box span {
-            display: block;
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--pitlane-yellow);
-            line-height: 1;
-        }
-
-        .time-box label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Past Competitions */
-        .past-event-card {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 50px;
-            padding-bottom: 50px;
-            border-bottom: 1px solid var(--slate-blue-light);
-        }
-
-        .past-info {
-            flex: 1;
-        }
-
-        .past-info h3 {
-            font-size: 2.5rem;
-            color: var(--pitlane-yellow);
-            margin-bottom: 15px;
-        }
-
-        .past-info h4 {
-            font-size: 1.5rem;
-            margin: 20px 0 10px;
-            color: var(--text-light);
-        }
-
-        .awards-list {
-            list-style: none;
-        }
-
-        .awards-list li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .awards-list li::before {
-            content: "🏆";
-            position: absolute;
-            left: 0;
-            top: 2px;
-            font-size: 1rem;
-        }
-
-        .past-media {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .media-placeholder {
-            width: 100%;
-            background-color: var(--slate-blue-light);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-style: italic;
-            border: 1px solid var(--text-muted);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .media-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-box {
-            height: 250px;
-        }
-
-        .video-box::after {
-            content: "▶";
-            position: absolute;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.8);
-            background: rgba(0,0,0,0.5);
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .image-box {
-            height: 200px;
-        }
-
-        @media (max-width: 900px) {
-            .live-event-box, .past-event-card {
-                flex-direction: column;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitions | Optimum Racing</title>
+  <meta name="description" content="Next Formula Student race countdown, past results and gallery for Optimum Racing.">
+  <meta name="theme-color" content="#0b141d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-
-    <header>
-        <div class="logo-container">
-            <div class="uop-badge">UoP</div>
-            <div class="site-title">Optimum Racing</div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="team.html">Team Info</a></li>
-                <!-- Active class applied to Competition tab -->
-                <li><a href="competitions.html" class="active">Competition Info</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="site-header-wrap">
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">UoP</span>
+        <span class="brand-name">Optimum Racing</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html" aria-current="page">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </nav>
     </header>
+  </div>
 
-    <div class="container">
-        
-        <!-- Live / Upcoming Competition -->
-        <div class="live-event-box">
-            <div class="event-details">
-                <h2>Formula Student UK 2026</h2>
-                <p>Silverstone Circuit, Northamptonshire • July 15-19, 2026</p>
-                <a href="#" class="live-btn">
-                    <span class="live-dot"></span>
-                    WATCH LIVE
-                </a>
-            </div>
+  <section class="page-hero" aria-labelledby="k-h"><span class="eyebrow">Race calendar</span><h1 id="k-h">Competitions</h1><p>What's next, what we have achieved and the moments in between.</p></section>
+  <main id="main">
 
-            <!-- Countdown Timer -->
-            <div class="countdown-container">
-                <div class="time-box">
-                    <span id="days">45</span>
-                    <label>Days</label>
-                </div>
-                <div class="time-box">
-                    <span id="hours">12</span>
-                    <label>Hours</label>
-                </div>
-                <div class="time-box">
-                    <span id="mins">30</span>
-                    <label>Mins</label>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">Past Competitions</h2>
-
-        <!-- Past Event 1 -->
-        <div class="past-event-card">
-            <div class="past-info">
-                <h3>Formula Bharat 2025</h3>
-                <p>Optimum Racing successfully competed in the dynamic and static events, pushing our custom-built single-seater to the limit on the track.</p>
-                
-                <h4>Awards & Results</h4>
-                <ul class="awards-list">
-                    <li>Top 10 Finish in Endurance Event</li>
-                    <li>Best Engineering Design Presentation</li>
-                    <li>Fastest Acceleration in Class</li>
-                </ul>
-            </div>
-            <div class="past-media">
-                <!-- Track Video Placeholder -->
-                <div class="media-placeholder video-box">
-                    <img src="images/car-track-video.jpg" alt="Video of car on the track">
-                </div>
-                <!-- Racer/Car Image Placeholder -->
-                <div class="media-placeholder image-box">
-                    <img src="images/car-racer.jpg" alt="Pictures of the car and racer">
-                </div>
-            </div>
-        </div>
-
+    <div class="event-box reveal" style="margin-top:0">
+      <div>
+        <span class="eyebrow">Next event</span>
+        <h2>Formula Student UK 2027</h2>
+        <p>Silverstone Circuit, Northamptonshire • July 15–18, 2027</p>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="live-btn"><span class="live-dot"></span> WATCH LIVE ON RACE DAY</a>
+      </div>
+      <div class="countdown" data-target="2027-07-15T09:00:00+01:00" role="timer" aria-label="Countdown to the next competition">
+        <div class="time-box"><span id="days">00</span><label>Days</label></div>
+        <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
+        <div class="time-box"><span id="mins">00</span><label>Mins</label></div>
+        <div class="time-box"><span id="secs">00</span><label>Secs</label></div>
+      </div>
     </div>
-<script>
-        // Set the date of your next competition here
-        const countDownDate = new Date("July 15, 2027 09:00:00").getTime();
 
-        // Update the countdown every 1 second
-        const timerInterval = setInterval(function() {
+    <section class="section" style="margin-top:2.5rem" aria-labelledby="pc">
+      <div class="section-head"><div><span class="eyebrow">Track record</span><h2 id="pc">Past competitions</h2></div></div>
+      <div class="tabs" role="tablist" aria-label="Season"><button class="tab" role="tab" id="t-y25" aria-controls="p-y25" aria-selected="true">2025</button><button class="tab" role="tab" id="t-y24" aria-controls="p-y24" aria-selected="false">2024</button><button class="tab" role="tab" id="t-y23" aria-controls="p-y23" aria-selected="false">2023</button></div>
+      <div class="tab-panel result-panel" id="p-y25" role="tabpanel" aria-labelledby="t-y25">
+        <div><h3>Formula Bharat 2025</h3><p>Optimum Racing successfully competed in the dynamic and static events, pushing our custom-built single-seater to the limit on the track.</p><h4 style="margin-top:1.25rem;font-size:1.4rem;color:var(--signal)">Awards &amp; results</h4><ul class="awards"><li>Top 10 Finish in Endurance Event</li><li>Best Engineering Design Presentation</li><li>Fastest Acceleration in Class</li></ul></div>
+        <div class="scores"><h4>Points by event</h4><div class="score"><div class="top"><span>Design</span><b>118/150</b></div><div class="bar"><i data-w="79"></i></div></div><div class="score"><div class="top"><span>Cost</span><b>72/100</b></div><div class="bar"><i data-w="72"></i></div></div><div class="score"><div class="top"><span>Business plan</span><b>61/75</b></div><div class="bar"><i data-w="81"></i></div></div><div class="score"><div class="top"><span>Acceleration</span><b>88/100</b></div><div class="bar"><i data-w="88"></i></div></div><div class="score"><div class="top"><span>Endurance</span><b>210/325</b></div><div class="bar"><i data-w="65"></i></div></div></div></div><div class="tab-panel result-panel" id="p-y24" role="tabpanel" aria-labelledby="t-y24" hidden>
+        <div><h3>Formula Student Sri Lanka 2024</h3><p>Our first full season with the in-house chassis. A reliable finish in every dynamic event and a podium in the cost report.</p><h4 style="margin-top:1.25rem;font-size:1.4rem;color:var(--signal)">Awards &amp; results</h4><ul class="awards"><li>3rd Place Cost & Manufacturing</li><li>Rookie Team of the Year</li><li>Zero scrutineering failures</li></ul></div>
+        <div class="scores"><h4>Points by event</h4><div class="score"><div class="top"><span>Design</span><b>96/150</b></div><div class="bar"><i data-w="64"></i></div></div><div class="score"><div class="top"><span>Cost</span><b>81/100</b></div><div class="bar"><i data-w="81"></i></div></div><div class="score"><div class="top"><span>Business plan</span><b>55/75</b></div><div class="bar"><i data-w="73"></i></div></div><div class="score"><div class="top"><span>Acceleration</span><b>70/100</b></div><div class="bar"><i data-w="70"></i></div></div><div class="score"><div class="top"><span>Endurance</span><b>160/325</b></div><div class="bar"><i data-w="49"></i></div></div></div></div><div class="tab-panel result-panel" id="p-y23" role="tabpanel" aria-labelledby="t-y23" hidden>
+        <div><h3>Inter-University Showcase 2023</h3><p>A static-display debut where the concept car and the team story were presented to industry judges.</p><h4 style="margin-top:1.25rem;font-size:1.4rem;color:var(--signal)">Awards &amp; results</h4><ul class="awards"><li>Audience Choice Award</li><li>Best Concept Render</li></ul></div>
+        <div class="scores"><h4>Points by event</h4><div class="score"><div class="top"><span>Design</span><b>80/150</b></div><div class="bar"><i data-w="53"></i></div></div><div class="score"><div class="top"><span>Cost</span><b>60/100</b></div><div class="bar"><i data-w="60"></i></div></div><div class="score"><div class="top"><span>Business plan</span><b>50/75</b></div><div class="bar"><i data-w="67"></i></div></div><div class="score"><div class="top"><span>Acceleration</span><b>0/100</b></div><div class="bar"><i data-w="0"></i></div></div><div class="score"><div class="top"><span>Endurance</span><b>0/325</b></div><div class="bar"><i data-w="0"></i></div></div></div></div>
+    </section>
 
-            // Get today's date and time
-            const now = new Date().getTime();
+    <section class="section" aria-labelledby="gl">
+      <div class="section-head"><div><span class="eyebrow">Moments</span><h2 id="gl">Gallery</h2></div><p class="lead">Placeholder artwork, swap in your own photos.</p></div>
+      <div class="gallery reveal"><button type="button" aria-label="Open photo: Endurance run at dusk"><img src="images/gallery/g1.svg" alt="Endurance run at dusk" loading="lazy"></button><button type="button" aria-label="Open photo: Skidpad lap"><img src="images/gallery/g2.svg" alt="Skidpad lap" loading="lazy"></button><button type="button" aria-label="Open photo: Design judging"><img src="images/gallery/g3.svg" alt="Design judging" loading="lazy"></button><button type="button" aria-label="Open photo: Pit stop practice"><img src="images/gallery/g4.svg" alt="Pit stop practice" loading="lazy"></button><button type="button" aria-label="Open photo: Scrutineering inspection"><img src="images/gallery/g5.svg" alt="Scrutineering inspection" loading="lazy"></button><button type="button" aria-label="Open photo: Podium celebration"><img src="images/gallery/g6.svg" alt="Podium celebration" loading="lazy"></button></div>
+    </section>
 
-            // Find the distance between now and the countdown date
-            const distance = countDownDate - now;
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="lb-btn lb-close" aria-label="Close">✕</button>
+      <button class="lb-btn lb-prev" aria-label="Previous photo">‹</button>
+      <figure><img src="" alt=""><figcaption></figcaption></figure>
+      <button class="lb-btn lb-next" aria-label="Next photo">›</button>
+    </div>
+  </main>
 
-            // Time calculations for days, hours, and minutes
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-            // Display the result in the corresponding HTML elements
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("mins").innerHTML = minutes;
-
-            // If the countdown is finished, stop the timer and display zeros
-            if (distance < 0) {
-                clearInterval(timerInterval);
-                document.getElementById("days").innerHTML = "0";
-                document.getElementById("hours").innerHTML = "0";
-                document.getElementById("mins").innerHTML = "0";
-            }
-        }, 1000);
-    </script>
-
+  <div class="checker" aria-hidden="true"></div>
+  <footer class="site-footer">
+    <p>Concept website designed for the Optimum Racing recruitment task. Not the official team site. All people, sponsors and results shown are fictional placeholders.</p>
+    <ul><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
+  </footer>
+  <button class="to-top" aria-label="Back to top">↑</button>
 </body>
 </html>

@@ -1,313 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Team Roster | Optimum Racing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --slate-blue: #0f172a;
-            --slate-blue-light: #1e293b;
-            --pitlane-yellow: #ffcc00;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--slate-blue);
-            color: var(--text-light);
-            font-family: 'Figtree', sans-serif;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Big Shoulders Display', sans-serif;
-            text-transform: uppercase;
-        }
-
-        /* Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: var(--slate-blue-light);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .uop-badge {
-            background-color: var(--pitlane-yellow);
-            color: var(--slate-blue);
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 1.5rem;
-        }
-
-        .site-title {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            padding-bottom: 5px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--pitlane-yellow);
-        }
-
-        nav a.active {
-            border-bottom: 3px solid var(--pitlane-yellow);
-            color: var(--text-light);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 5%;
-        }
-
-        .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--slate-blue-light);
-            padding-bottom: 20px;
-        }
-
-        .page-title {
-            font-size: 3.5rem;
-            color: var(--text-light);
-        }
-
-        .back-link {
-            color: var(--pitlane-yellow);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: opacity 0.3s;
-        }
-
-        .back-link:hover {
-            opacity: 0.8;
-        }
-
-        /* Roster Grid */
-        .roster-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .team-member-card {
-            background-color: var(--slate-blue-light);
-            padding: 30px 20px;
-            border-radius: 8px;
-            text-align: center;
-            border-top: 4px solid var(--pitlane-yellow);
-            transition: transform 0.3s ease;
-        }
-
-        .team-member-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .team-member-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            background-color: var(--text-muted);
-            border: 3px solid var(--slate-blue);
-        }
-
-        .team-member-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            color: var(--text-light);
-        }
-
-        .member-role {
-            color: var(--pitlane-yellow);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .member-qualification {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .member-dept {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .member-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .member-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.85rem;
-            border: 1px solid var(--text-muted);
-            padding: 5px 12px;
-            border-radius: 20px;
-            transition: all 0.3s;
-        }
-
-        .member-links a:hover {
-            border-color: var(--pitlane-yellow);
-            color: var(--pitlane-yellow);
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Roster | Optimum Racing</title>
+  <meta name="description" content="All members of the Optimum Racing team, filterable by department.">
+  <meta name="theme-color" content="#0b141d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-
-    <header>
-        <div class="logo-container">
-            <div class="uop-badge">UoP</div>
-            <div class="site-title">Optimum Racing</div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <!-- Leaving Team Info active to show this is a sub-page of the team section -->
-                <li><a href="team.html" class="active">Team Info</a></li>
-                <li><a href="competitions.html">Competition Info</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="site-header-wrap">
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">UoP</span>
+        <span class="brand-name">Optimum Racing</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html" aria-current="page">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </nav>
     </header>
+  </div>
 
-    <div class="container">
-        
-        <div class="header-section">
-            <h1 class="page-title">Meet the Team</h1>
-            <a href="team.html" class="back-link">← Back to Leadership</a>
-        </div>
+  <section class="page-hero" aria-labelledby="f-h"><a class="back-link" href="team.html">← Back to leadership</a><h1 id="f-h" style="margin-top:.75rem">The full roster</h1><p>Filter by department or search by name and role.</p></section>
+  <main id="main">
 
-        <div class="roster-grid">
-            
-            <!-- Member 1 -->
-            <div class="team-member-card">
-                <img src="images/member1.jpg" alt="Team Member">
-                <h3>Kasun Perera</h3>
-                <span class="member-role">Suspension Engineer</span>
-                <div class="member-qualification">BSc Engineering Undergraduate</div>
-                <div class="member-dept">Mechanical Engineering</div>
-                <div class="member-links">
-                    <a href="mailto:kasun.fake@eng.pdn.ac.lk">Email</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-
-            <!-- Member 2 -->
-            <div class="team-member-card">
-                <img src="images/member2.jpg" alt="Team Member">
-                <h3>Amandi Silva</h3>
-                <span class="member-role">Telemetry Specialist</span>
-                <div class="member-qualification">BSc Engineering Undergraduate</div>
-                <div class="member-dept">Electrical & Electronic Eng.</div>
-                <div class="member-links">
-                    <a href="mailto:amandi.fake@eng.pdn.ac.lk">Email</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-
-            <!-- Member 3 -->
-            <div class="team-member-card">
-                <img src="images/member3.jpg" alt="Team Member">
-                <h3>Devin Fernando</h3>
-                <span class="member-role">Powertrain Calibrator</span>
-                <div class="member-qualification">BSc Engineering Undergraduate</div>
-                <div class="member-dept">Mechanical Engineering</div>
-                <div class="member-links">
-                    <a href="mailto:devin.fake@eng.pdn.ac.lk">Email</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-
-            <!-- Member 4 -->
-            <div class="team-member-card">
-                <img src="images/member4.jpg" alt="Team Member">
-                <h3>Tharushi de Silva</h3>
-                <span class="member-role">Composites Fabricator</span>
-                <div class="member-qualification">BSc Engineering Undergraduate</div>
-                <div class="member-dept">Manufacturing & Industrial Eng.</div>
-                <div class="member-links">
-                    <a href="mailto:tharushi.fake@eng.pdn.ac.lk">Email</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-
-             <!-- Member 5 -->
-             <div class="team-member-card">
-                <img src="images/member5.jpg" alt="Team Member">
-                <h3>Nuwan Jayasuriya</h3>
-                <span class="member-role">Data Analyst</span>
-                <div class="member-qualification">BSc Engineering Undergraduate</div>
-                <div class="member-dept">Computer Engineering</div>
-                <div class="member-links">
-                    <a href="mailto:nuwan.fake@eng.pdn.ac.lk">Email</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-
-            <!-- Member 6 -->
-            <div class="team-member-card">
-                <img src="images/member6.jpg" alt="Team Member">
-                <h3>Senuri Wijesinghe</h3>
-                <span class="member-role">Operations & Logistics</span>
-                <div class="member-qualification">BSc Engineering Undergraduate</div>
-                <div class="member-dept">Engineering Management</div>
-                <div class="member-links">
-                    <a href="mailto:senuri.fake@eng.pdn.ac.lk">Email</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-
-        </div>
+    <div class="toolbar">
+      <div class="chips" role="group" aria-label="Filter by department"><button class="chip" type="button" data-filter="all" aria-pressed="true">All</button><button class="chip" type="button" data-filter="Mechanical Engineering" aria-pressed="false">Mechanical Engineering</button><button class="chip" type="button" data-filter="Electrical &amp; Electronic Eng." aria-pressed="false">Electrical &amp; Electronic Eng.</button><button class="chip" type="button" data-filter="Manufacturing &amp; Industrial Eng." aria-pressed="false">Manufacturing &amp; Industrial Eng.</button><button class="chip" type="button" data-filter="Computer Engineering" aria-pressed="false">Computer Engineering</button><button class="chip" type="button" data-filter="Engineering Management" aria-pressed="false">Engineering Management</button></div>
+      <div class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><label class="sr-only" for="member-search">Search members</label><input id="member-search" type="search" placeholder="Search name or role…" autocomplete="off"></div>
     </div>
+    <p id="member-count" style="color:var(--muted);margin-bottom:1rem" aria-live="polite"></p>
+    <div class="team-grid" data-roster>
+      <button class="member reveal" type="button" data-tilt data-name="Kasun Perera" data-role="Suspension Engineer" data-dept="Mechanical Engineering" data-year="3rd year" data-bio="Designs wishbones, uprights and the damper layout, then tunes them on the skidpad." data-skills="Kinematics:87,Machining:70,Testing:82" data-fun="Fun fact: Drives the same route home every day to &quot;feel&quot; the road." data-email="kasun@optimumracing.example" data-img="images/team/kasun-perera.svg" aria-label="Open profile: Kasun Perera, Suspension Engineer">
+        <span class="photo"><span class="no">#06</span><img src="images/team/kasun-perera.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Kasun Perera</h3><span class="role">Suspension Engineer</span><span class="dept">Mechanical Engineering</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Amandi Silva" data-role="Telemetry Specialist" data-dept="Electrical &amp; Electronic Eng." data-year="3rd year" data-bio="Builds the data dashboard that engineers watch during endurance runs." data-skills="Python:90,Sensors:84,Dashboards:88" data-fun="Fun fact: Her laptop has more stickers than screen." data-email="amandi@optimumracing.example" data-img="images/team/amandi-silva.svg" aria-label="Open profile: Amandi Silva, Telemetry Specialist">
+        <span class="photo"><span class="no">#07</span><img src="images/team/amandi-silva.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Amandi Silva</h3><span class="role">Telemetry Specialist</span><span class="dept">Electrical &amp; Electronic Eng.</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Devin Fernando" data-role="Powertrain Calibrator" data-dept="Mechanical Engineering" data-year="4th year" data-bio="Maps fuel and ignition tables on the dyno to balance power and reliability." data-skills="Engine tuning:91,Dyno:85,Diagnostics:80" data-fun="Fun fact: Can tell the rev limit by ear." data-email="devin@optimumracing.example" data-img="images/team/devin-fernando.svg" aria-label="Open profile: Devin Fernando, Powertrain Calibrator">
+        <span class="photo"><span class="no">#08</span><img src="images/team/devin-fernando.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Devin Fernando</h3><span class="role">Powertrain Calibrator</span><span class="dept">Mechanical Engineering</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Tharushi de Silva" data-role="Composites Fabricator" data-dept="Manufacturing &amp; Industrial Eng." data-year="3rd year" data-bio="Lays up carbon-fibre panels, the nose cone and the aero elements." data-skills="Layup:93,Moulds:79,Quality:88" data-fun="Fun fact: Believes resin smells like victory." data-email="tharushi@optimumracing.example" data-img="images/team/tharushi-de-silva.svg" aria-label="Open profile: Tharushi de Silva, Composites Fabricator">
+        <span class="photo"><span class="no">#09</span><img src="images/team/tharushi-de-silva.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Tharushi de Silva</h3><span class="role">Composites Fabricator</span><span class="dept">Manufacturing &amp; Industrial Eng.</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Nuwan Jayasuriya" data-role="Data Analyst" data-dept="Computer Engineering" data-year="2nd year" data-bio="Turns raw logger files into lap-by-lap insights for the drivers." data-skills="Statistics:86,SQL:81,Visualisation:90" data-fun="Fun fact: Plots everything, including lunch queues." data-email="nuwan@optimumracing.example" data-img="images/team/nuwan-jayasuriya.svg" aria-label="Open profile: Nuwan Jayasuriya, Data Analyst">
+        <span class="photo"><span class="no">#10</span><img src="images/team/nuwan-jayasuriya.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Nuwan Jayasuriya</h3><span class="role">Data Analyst</span><span class="dept">Computer Engineering</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Senuri Wijesinghe" data-role="Operations &amp; Logistics" data-dept="Engineering Management" data-year="3rd year" data-bio="Plans freight, travel and the pit schedule so nothing is left behind." data-skills="Scheduling:94,Vendors:82,Calm:97" data-fun="Fun fact: Packs the spare-parts list in alphabetical order." data-email="senuri@optimumracing.example" data-img="images/team/senuri-wijesinghe.svg" aria-label="Open profile: Senuri Wijesinghe, Operations &amp; Logistics">
+        <span class="photo"><span class="no">#11</span><img src="images/team/senuri-wijesinghe.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Senuri Wijesinghe</h3><span class="role">Operations &amp; Logistics</span><span class="dept">Engineering Management</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Isuru Bandara" data-role="Chassis Welder" data-dept="Manufacturing &amp; Industrial Eng." data-year="3rd year" data-bio="TIG-welds the steel spaceframe and checks every joint against the jig." data-skills="TIG welding:92,Jigging:85,Inspection:80" data-fun="Fun fact: Has a favourite welding helmet and will not discuss it." data-email="isuru@optimumracing.example" data-img="images/team/isuru-bandara.svg" aria-label="Open profile: Isuru Bandara, Chassis Welder">
+        <span class="photo"><span class="no">#12</span><img src="images/team/isuru-bandara.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Isuru Bandara</h3><span class="role">Chassis Welder</span><span class="dept">Manufacturing &amp; Industrial Eng.</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Chamodi Rathnayake" data-role="Brake Systems Engineer" data-dept="Mechanical Engineering" data-year="2nd year" data-bio="Sizes discs and calipers and bleeds the system before every run." data-skills="Thermal analysis:78,Hydraulics:84,Safety:90" data-fun="Fun fact: Bleeds brakes faster than she makes tea." data-email="chamodi@optimumracing.example" data-img="images/team/chamodi-rathnayake.svg" aria-label="Open profile: Chamodi Rathnayake, Brake Systems Engineer">
+        <span class="photo"><span class="no">#13</span><img src="images/team/chamodi-rathnayake.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Chamodi Rathnayake</h3><span class="role">Brake Systems Engineer</span><span class="dept">Mechanical Engineering</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Thilina Weerasinghe" data-role="Battery &amp; HV Safety" data-dept="Electrical &amp; Electronic Eng." data-year="4th year" data-bio="Designs the accumulator and high-voltage safety interlock for the electric concept." data-skills="HV safety:92,BMS:83,Simulation:80" data-fun="Fun fact: Always wears the orange gloves, even for lunch." data-email="thilina@optimumracing.example" data-img="images/team/thilina-weerasinghe.svg" aria-label="Open profile: Thilina Weerasinghe, Battery &amp; HV Safety">
+        <span class="photo"><span class="no">#14</span><img src="images/team/thilina-weerasinghe.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Thilina Weerasinghe</h3><span class="role">Battery &amp; HV Safety</span><span class="dept">Electrical &amp; Electronic Eng.</span></span>
+      </button><button class="member reveal" type="button" data-tilt data-name="Ishara Madushani" data-role="Media &amp; Social" data-dept="Computer Engineering" data-year="2nd year" data-bio="Films the build, edits the race highlights and runs the team social channels." data-skills="Video:90,Storytelling:88,Design:85" data-fun="Fun fact: Has 400 GB of footage of one single bolt being tightened." data-email="ishara@optimumracing.example" data-img="images/team/ishara-madushani.svg" aria-label="Open profile: Ishara Madushani, Media &amp; Social">
+        <span class="photo"><span class="no">#15</span><img src="images/team/ishara-madushani.svg" alt="" loading="lazy" width="200" height="200"></span>
+        <span class="body"><h3>Ishara Madushani</h3><span class="role">Media &amp; Social</span><span class="dept">Computer Engineering</span></span>
+      </button>
+    </div>
+    <p class="empty" hidden>No members match your search. Try a different word or department.</p>
+    <div style="height:3rem"></div>
 
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Member profile" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" type="button" aria-label="Close profile">✕</button>
+      <img src="" alt="">
+      <div class="modal-content">
+        <h3 class="m-name"></h3><span class="role m-role"></span><span class="meta m-meta"></span>
+        <p class="m-bio"></p>
+        <div class="skills"></div>
+        <p class="fun m-fun"></p>
+        <div class="pill-links"><a class="m-mail" href="#">Email</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+      </div>
+    </div>
+  </div>
+  </main>
+
+  <div class="checker" aria-hidden="true"></div>
+  <footer class="site-footer">
+    <p>Concept website designed for the Optimum Racing recruitment task. Not the official team site. All people, sponsors and results shown are fictional placeholders.</p>
+    <ul><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
+  </footer>
+  <button class="to-top" aria-label="Back to top">↑</button>
 </body>
 </html>

@@ -5,72 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Optimum Racing | University of Peradeniya Formula Student Team</title>
   <meta name="description" content="Concept website for Optimum Racing, the Formula Student team of the University of Peradeniya.">
+  <meta name="theme-color" content="#0b141d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-
-  <header class="site-header">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true">UoP</span>
-      <span class="brand-name">Optimum Racing</span>
-    </a>
-    <nav aria-label="Main">
-      <ul class="nav-list">
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="team.html">Team Info</a></li>
-        <!-- Fixed header navigation link to competitions.html -->
-        <li><a href="competitions.html">Competition Info</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-scene">
-        <img class="scene-car" src="images/car.webp" width="568" height="215" alt="The Optimum Racing Formula Student car">
-      </div>
-
-      <nav class="hero-links" aria-label="Explore the project">
-        <ul class="link-list">
-          <li>
-            <a class="link-card" href="university.html">
-              <h2>The University</h2>
-              <p>Our faculty and its history</p>
-            </a>
-          </li>
-          <li>
-            <a class="link-card" href="team.html">
-              <h2>The Team</h2>
-              <p>Leadership and member profiles</p>
-            </a>
-          </li>
-          <li>
-            <a class="link-card" href="car.html">
-              <h2>The Car</h2>
-              <p>Key features and sponsors</p>
-            </a>
-          </li>
-        </ul>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="site-header-wrap">
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">UoP</span>
+        <span class="brand-name">Optimum Racing</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list"><li><a href="index.html" aria-current="page">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
       </nav>
+    </header>
+  </div>
+
+  <div style="max-width:var(--page-width);margin:0 auto;padding:0 var(--gutter)">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero-copy">
+      <span class="eyebrow">Formula Student · University of Peradeniya</span>
+      <h1 id="hero-h">We build.<br>We <span class="word" data-rotate="race,engineer,compete,win">race</span><span class="caret" aria-hidden="true"></span></h1>
+      <p class="lead">A single-seat race car designed, built and driven by the students of the Faculty of Engineering.</p>
+      <div class="hero-cta">
+        <a class="button" href="competition.html">Next race countdown</a>
+        <a class="button ghost" href="car.html">Inspect the car</a>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <div class="speedlines" aria-hidden="true">
+        <i style="top:14%;animation-delay:0s"></i><i style="top:28%;animation-delay:.6s;width:55%"></i><i style="top:46%;animation-delay:1.1s"></i><i style="top:62%;animation-delay:.3s;width:30%"></i><i style="top:78%;animation-delay:1.6s;width:50%"></i><i style="top:90%;animation-delay:.9s"></i>
+      </div>
+      <div class="car-wrap"><div class="car-par">
+        <img class="scene-car" src="images/car.webp" width="568" height="215" alt="The Optimum Racing Formula Student car">
+        <div class="car-shadow" aria-hidden="true"></div>
+        <div class="hud a"><b>0–100</b>3.9 s</div>
+        <div class="hud b"><b>1.6</b>g cornering</div>
+        <div class="hud c"><b>196</b>kg</div>
+      </div></div>
+    </div>
+  </section>
+  </div>
+  <main id="main">
+
+    <ul class="link-list">
+      <li class="reveal"><a class="link-card" href="university.html"><span class="num">01</span><h2>The University</h2><p>Our faculty and its history</p><span class="arrow">Explore →</span></a></li>
+      <li class="reveal"><a class="link-card" href="team.html"><span class="num">02</span><h2>The Team</h2><p>Leadership and member profiles</p><span class="arrow">Meet us →</span></a></li>
+      <li class="reveal"><a class="link-card" href="car.html"><span class="num">03</span><h2>The Car</h2><p>Build story, features and sponsors</p><span class="arrow">Inspect →</span></a></li>
+      <li class="reveal"><a class="link-card" href="competition.html"><span class="num">04</span><h2>Competitions</h2><p>Countdown, results and gallery</p><span class="arrow">Race day →</span></a></li>
+    </ul>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">
+      <span>Design</span><span>Build</span><span>Test</span><span>Race</span><span>Repeat</span><span>Formula Student</span><span>Peradeniya</span><span>Optimum Racing</span>
+      <span>Design</span><span>Build</span><span>Test</span><span>Race</span><span>Repeat</span><span>Formula Student</span><span>Peradeniya</span><span>Optimum Racing</span>
+    </div></div>
+
+    <section class="stats reveal" aria-label="Team at a glance">
+      <div class="stat"><strong><span data-count="26">0</span></strong><span>Student engineers</span></div>
+      <div class="stat"><strong><span data-count="3">0</span><sup>yrs</sup></strong><span>Building race cars</span></div>
+      <div class="stat"><strong><span data-count="42">0</span><sup>°</sup></strong><span>Max cornering lean test</span></div>
+      <div class="stat"><strong><span data-count="1850">0</span><small>h</small></strong><span>Hours in the workshop</span></div>
     </section>
 
-    <section class="intro">
-      <h1>Built in Peradeniya. Engineered to race.</h1>
-      <div class="intro-text">
+    <section class="intro" aria-labelledby="intro-h">
+      <h2 id="intro-h" class="reveal from-left">Built in Peradeniya. Engineered to race.</h2>
+      <div class="intro-text reveal from-right">
         <p>Optimum Racing is the Formula Student team of the University of Peradeniya's Faculty of Engineering. Our students design, build and race a single-seat car from scratch, and compete against universities from around the world.</p>
-        <!-- Fixed button link to competitions.html -->
-        <a class="button" href="competitions.html">See our competitions</a>
+        <a class="button" href="competition.html">See our competitions</a>
       </div>
     </section>
   </main>
 
+  <div class="checker" aria-hidden="true"></div>
   <footer class="site-footer">
-    <p>Concept website designed for the Optimum Racing recruitment task. Not the official team site.</p>
+    <p>Concept website designed for the Optimum Racing recruitment task. Not the official team site. All people, sponsors and results shown are fictional placeholders.</p>
+    <ul><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
   </footer>
-
+  <button class="to-top" aria-label="Back to top">↑</button>
 </body>
 </html>

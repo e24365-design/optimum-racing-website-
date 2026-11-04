@@ -1,401 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Car | Optimum Racing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Google Model Viewer component for 3D interactive rendering -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
-
-    <style>
-        :root {
-            --slate-blue: #0f172a;
-            --slate-blue-light: #1e293b;
-            --pitlane-yellow: #ffcc00;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--slate-blue);
-            color: var(--text-light);
-            font-family: 'Figtree', sans-serif;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Big Shoulders Display', sans-serif;
-            text-transform: uppercase;
-        }
-
-        /* Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: var(--slate-blue-light);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .uop-badge {
-            background-color: var(--pitlane-yellow);
-            color: var(--slate-blue);
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 1.5rem;
-        }
-
-        .site-title {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            padding-bottom: 5px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--pitlane-yellow);
-        }
-
-        nav a.active {
-            border-bottom: 3px solid var(--pitlane-yellow);
-            color: var(--text-light);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 5%;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--slate-blue-light);
-            padding-bottom: 10px;
-        }
-
-        /* SECTION 1: Building History */
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 80px;
-        }
-
-        .history-card {
-            background-color: var(--slate-blue-light);
-            border-radius: 8px;
-            overflow: hidden;
-            border-left: 4px solid var(--pitlane-yellow);
-        }
-
-        .history-img-placeholder {
-            width: 100%;
-            height: 220px;
-            background-color: #334155;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        .history-img-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .history-content {
-            padding: 20px;
-        }
-
-        .history-step {
-            color: var(--pitlane-yellow);
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .history-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        /* SECTION 2: Interactive Feature Pointers */
-        .interactive-container {
-            position: relative;
-            background-color: var(--slate-blue-light);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 80px;
-        }
-
-        .car-image-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto 30px auto;
-        }
-
-        .car-image-wrapper img {
-            width: 100%;
-            display: block;
-            border-radius: 8px;
-        }
-
-        /* Clickable Hotspots */
-        .hotspot {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            background-color: var(--pitlane-yellow);
-            border-radius: 50%;
-            cursor: pointer;
-            border: 3px solid var(--slate-blue);
-            transform: translate(-50%, -50%);
-            animation: pulse-ring 1.8s infinite;
-        }
-
-        .hotspot.active {
-            background-color: #ffffff;
-            border-color: var(--pitlane-yellow);
-            animation: none;
-            box-shadow: 0 0 15px var(--pitlane-yellow);
-        }
-
-        @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); }
-            70% { box-shadow: 0 0 0 12px rgba(255, 204, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
-        }
-
-        /* Animated Info Panel */
-        .feature-display {
-            background-color: var(--slate-blue);
-            border: 2px solid var(--pitlane-yellow);
-            padding: 25px;
-            border-radius: 8px;
-            min-height: 120px;
-            transition: all 0.4s ease-in-out;
-            opacity: 1;
-        }
-
-        .feature-display.fade-out {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        .feature-display h3 {
-            color: var(--pitlane-yellow);
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        /* SECTION 3: 3D Model Section */
-        .model-container {
-            background-color: var(--slate-blue-light);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        model-viewer {
-            width: 100%;
-            height: 500px;
-            background-color: var(--slate-blue);
-            border-radius: 8px;
-            --poster-color: transparent;
-        }
-
-        .model-instructions {
-            margin-top: 15px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Car | Optimum Racing</title>
+  <meta name="description" content="Build history, interactive feature points, specifications and sponsors of the Optimum Racing car.">
+  <meta name="theme-color" content="#0b141d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-
-    <header>
-        <div class="logo-container">
-            <div class="uop-badge">UoP</div>
-            <div class="site-title">Optimum Racing</div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="team.html">Team Info</a></li>
-                <li><a href="competitions.html">Competition Info</a></li>
-                <!-- Active tab for Car Page -->
-                <li><a href="car.html" class="active">The Car</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="site-header-wrap">
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">UoP</span>
+        <span class="brand-name">Optimum Racing</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html" aria-current="page">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </nav>
     </header>
+  </div>
 
-    <div class="container">
+  <section class="page-hero" aria-labelledby="c-h"><span class="eyebrow">Car 03 · "Kandyan"</span><h1 id="c-h">The car</h1><p>From first sketch to the grid: how it was built, what makes it fast and who helped.</p></section>
+  <main id="main">
 
-        <!-- 1. BUILDING HISTORY -->
-        <h2 class="section-title">1. Building History</h2>
-        <div class="history-grid">
-            
-            <div class="history-card">
-                <div class="history-img-placeholder">
-                    <!-- Replace src with your building stage image -->
-                    <img src="images/cad-design.jpg" alt="CAD Design Phase" onerror="this.style.display='none'">
-                    <span>Add Photo: CAD Design</span>
-                </div>
-                <div class="history-content">
-                    <span class="history-step">Phase 01</span>
-                    <h3>CAD & Aerodynamic Simulation</h3>
-                    <p>Engineered entirely from scratch. CFD simulations were performed to optimize downforce while maintaining low drag coefficients.</p>
-                </div>
-            </div>
+    <section class="section" style="border-top:0" aria-labelledby="h1">
+      <div class="section-head"><div><span class="eyebrow">Build story</span><h2 id="h1">Building history</h2></div></div>
+      <div class="phase-grid reveal">
+        <div class="phase-nav" role="tablist" aria-label="Build phases"><button type="button" role="tab" aria-selected="false" data-img="images/gallery/g3.svg" data-step="Phase 01" data-title="CAD &amp; Aerodynamic Simulation" data-text="Engineered entirely from scratch. CFD simulations were performed to optimize downforce while maintaining low drag coefficients."><small>Phase 01</small><b>CAD &amp; Aerodynamic Simulation</b></button><button type="button" role="tab" aria-selected="false" data-img="images/gallery/g5.svg" data-step="Phase 02" data-title="Chassis &amp; Frame Assembly" data-text="Precision jigging and TIG welding of the steel spaceframe, maximizing torsional rigidity and driver safety compliance."><small>Phase 02</small><b>Chassis &amp; Frame Assembly</b></button><button type="button" role="tab" aria-selected="false" data-img="images/gallery/g1.svg" data-step="Phase 03" data-title="Track Calibration &amp; Tuning" data-text="Extensive track validation to tune suspension geometry, telemetry sensors, and engine ECU parameters prior to competition."><small>Phase 03</small><b>Track Calibration &amp; Tuning</b></button></div>
+        <div class="phase-panel"><img id="phase-img" src="" alt=""><div class="txt" id="phase-txt"><small class="step eyebrow"></small><h3></h3><p></p><div class="progress-dots" aria-hidden="true"><i></i><i></i><i></i></div></div></div>
+      </div>
+    </section>
 
-            <div class="history-card">
-                <div class="history-img-placeholder">
-                    <img src="images/chassis-build.jpg" alt="Chassis Fabrication" onerror="this.style.display='none'">
-                    <span>Add Photo: Chassis Welding</span>
-                </div>
-                <div class="history-content">
-                    <span class="history-step">Phase 02</span>
-                    <h3>Chassis & Frame Assembly</h3>
-                    <p>Precision jigging and TIG welding of the steel spaceframe, maximizing torsional rigidity and driver safety compliance.</p>
-                </div>
-            </div>
+    <section class="section" aria-labelledby="h2">
+      <div class="section-head"><div><span class="eyebrow">Interactive</span><h2 id="h2">The car now</h2></div><p class="lead">Tap a yellow point on the car to inspect it.</p></div>
+      <div class="interactive reveal">
+        <div class="car-stage"><div class="car-img-wrap">
+          <img src="images/car.webp" width="568" height="215" alt="Optimum Racing Formula Student car, front three-quarter view">
+          <button class="hotspot" style="left:13%;top:22%" aria-label="Rear wing and powertrain" aria-pressed="false">1</button>
+          <button class="hotspot" style="left:46%;top:30%" aria-label="Cockpit and telemetry" aria-pressed="false">2</button>
+          <button class="hotspot" style="left:41%;top:68%" aria-label="Suspension and braking" aria-pressed="false">3</button>
+          <button class="hotspot" style="left:88%;top:80%" aria-label="Front wing and aerodynamics" aria-pressed="false">4</button>
+        </div></div>
+        <div class="feature-display" id="feature-box" aria-live="polite"><span class="idx"></span><h3></h3><p></p><div class="mini"></div></div>
+      </div>
+    </section>
 
-            <div class="history-card">
-                <div class="history-img-placeholder">
-                    <img src="images/testing-track.jpg" alt="Track Testing" onerror="this.style.display='none'">
-                    <span>Add Photo: Track Testing</span>
-                </div>
-                <div class="history-content">
-                    <span class="history-step">Phase 03</span>
-                    <h3>Track Calibration & Tuning</h3>
-                    <p>Extensive track validation to tune suspension geometry, telemetry sensors, and engine ECU parameters prior to competition.</p>
-                </div>
-            </div>
+    <section class="section" aria-labelledby="h3">
+      <div class="section-head"><div><span class="eyebrow">Specifications</span><h2 id="h3">By the numbers</h2></div></div>
+      <div class="spec-gauges">
+        <div class="gauge" data-value="3.9" data-max="6" data-decimals="1"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>sec</small></div><p>0–100 km/h</p></div>
+        <div class="gauge" data-value="118" data-max="160" data-decimals="0"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>km/h</small></div><p>Top speed</p></div>
+        <div class="gauge" data-value="196" data-max="300" data-decimals="0"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>kg</small></div><p>Kerb weight</p></div>
+        <div class="gauge" data-value="1.6" data-max="2.5" data-decimals="1"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="46"/><circle class="val" cx="50" cy="50" r="46"/></svg><div class="num"><span class="n">0</span><small>g</small></div><p>Lateral grip</p></div>
+      </div>
+    </section>
 
-        </div>
+    <section class="section" aria-labelledby="h4">
+      <div class="section-head"><div><span class="eyebrow">Mini game</span><h2 id="h4">Launch control</h2></div><p class="lead">Five red lights. When they go out, tap as fast as you can.</p></div>
+      <div class="game reveal">
+        <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="readout" aria-live="assertive"><small>Reaction time</small>—</div>
+        <div class="btns"><button class="button" id="game-btn" type="button">START</button></div>
+        <ol class="leader" aria-label="Leaderboard"></ol>
+      </div>
+    </section>
 
-        <!-- 2. THE CAR NOW (INTERACTIVE FEATURE POINTERS) -->
-        <h2 class="section-title">2. The Car Now</h2>
-        <p style="margin-bottom: 20px; color: var(--text-muted);">Click on any yellow hotspot on the car to inspect its key technical specifications.</p>
+    <section class="section" aria-labelledby="h5">
+      <div class="section-head"><div><span class="eyebrow">Partners</span><h2 id="h5">Sponsors</h2></div><a class="button ghost" href="contact.html">Become a sponsor</a></div>
+      <div class="sponsors reveal"><div class="sponsor"><b>Lanka Dynamics</b><span>Title partner</span></div><div class="sponsor"><b>Ceylon Composites</b><span>Materials</span></div><div class="sponsor"><b>Hill Country Motors</b><span>Engine support</span></div><div class="sponsor"><b>Kandy Precision Works</b><span>Machining</span></div><div class="sponsor"><b>Mahaweli Power</b><span>Electrical</span></div><div class="sponsor"><b>Peak Telemetry</b><span>Data partner</span></div><div class="sponsor"><b>Orchid Lubricants</b><span>Fluids</span></div><div class="sponsor"><b>Temple Tyres</b><span>Tyres</span></div></div>
+    </section>
+  </main>
 
-        <div class="interactive-container">
-            <div class="car-image-wrapper">
-                <!-- Base Car Image -->
-                <img src="images/car.jpg" alt="Optimum Racing Formula Car" id="car-base-img" onerror="this.src='https://via.placeholder.com/900x500/1e293b/ffcc00?text=Formula+Student+Car+Render'">
-                
-                <!-- Clickable Pointers (Positions set via top/left %) -->
-                <div class="hotspot active" style="top: 35%; left: 25%;" onclick="showFeature(0, this)"></div>
-                <div class="hotspot" style="top: 60%; left: 45%;" onclick="showFeature(1, this)"></div>
-                <div class="hotspot" style="top: 75%; left: 75%;" onclick="showFeature(2, this)"></div>
-                <div class="hotspot" style="top: 40%; left: 88%;" onclick="showFeature(3, this)"></div>
-            </div>
-
-            <!-- Animated Information Output Box -->
-            <div class="feature-display" id="feature-box">
-                <h3 id="feature-title">Front Wing & Aerodynamics</h3>
-                <p id="feature-desc">Dual-element carbon composite front wing designed to generate front-axle downforce and balance high-speed cornering stability.</p>
-            </div>
-        </div>
-
-        <!-- 3. 3D OF CAR -->
-        <h2 class="section-title">3. 3D Model View</h2>
-        <div class="model-container">
-            <!-- Google Model Viewer component allows 360 rotation -->
-            <model-viewer 
-                src="models/car.gltf" 
-                alt="3D model of Optimum Racing Car" 
-                auto-rotate 
-                camera-controls 
-                shadow-intensity="1"
-                poster="images/car.jpg">
-            </model-viewer>
-            <p class="model-instructions">🖱️ Click and drag with your mouse (or swipe on mobile) to freely rotate the car in 3D.</p>
-        </div>
-
-    </div>
-
-    <!-- JavaScript for Feature Hotspot Animations -->
-    <script>
-        const features = [
-            {
-                title: "Front Wing & Aerodynamics",
-                desc: "Dual-element carbon composite front wing designed to generate front-axle downforce and balance high-speed cornering stability."
-            },
-            {
-                title: "Cockpit & Telemetry Systems",
-                desc: "Custom ergonomic seat with a digital dash displaying real-time sensor metrics, gear indicators, and live telemetry sync to the pit lane."
-            },
-            {
-                title: "Suspension & Braking",
-                desc: "Double wishbone pull-rod suspension system coupled with floating disc brakes and custom aluminum uprights for maximum mechanical grip."
-            },
-            {
-                title: "Rear Wing & Powertrain",
-                desc: "High-downforce multi-element rear wing paired with an optimized powertrain tuning for rapid acceleration out of low-speed corners."
-            }
-        ];
-
-        function showFeature(index, element) {
-            // Remove active style from all hotspots
-            document.querySelectorAll('.hotspot').forEach(spot => spot.classList.remove('active'));
-            // Highlight current clicked hotspot
-            element.classList.add('active');
-
-            const box = document.getElementById('feature-box');
-            const title = document.getElementById('feature-title');
-            const desc = document.getElementById('feature-desc');
-
-            // Trigger Fade Out animation
-            box.classList.add('fade-out');
-
-            setTimeout(() => {
-                // Change Content after fade out
-                title.innerText = features[index].title;
-                desc.innerText = features[index].desc;
-                // Fade back in
-                box.classList.remove('fade-out');
-            }, 300);
-        }
-    </script>
-
+  <div class="checker" aria-hidden="true"></div>
+  <footer class="site-footer">
+    <p>Concept website designed for the Optimum Racing recruitment task. Not the official team site. All people, sponsors and results shown are fictional placeholders.</p>
+    <ul><li><a href="index.html">Home</a></li><li><a href="university.html">University</a></li><li><a href="team.html">Team</a></li><li><a href="car.html">The Car</a></li><li><a href="competition.html">Competitions</a></li><li><a href="contact.html">Contact</a></li></ul>
+  </footer>
+  <button class="to-top" aria-label="Back to top">↑</button>
 </body>
 </html>
