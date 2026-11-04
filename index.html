@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/home.css?v=1">
   <script>document.documentElement.classList.add('js');</script>
   <script src="js/main.js" defer></script>
+  <script src="js/home.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -57,10 +59,10 @@
   <main id="main">
 
     <ul class="link-list">
-      <li class="reveal"><a class="link-card" href="university.html"><span class="num">01</span><h2>The University</h2><p>Our faculty and its history</p><span class="arrow">Explore →</span></a></li>
-      <li class="reveal"><a class="link-card" href="team.html"><span class="num">02</span><h2>The Team</h2><p>Leadership and member profiles</p><span class="arrow">Meet us →</span></a></li>
-      <li class="reveal"><a class="link-card" href="car.html"><span class="num">03</span><h2>The Car</h2><p>Build story, features and sponsors</p><span class="arrow">Inspect →</span></a></li>
-      <li class="reveal"><a class="link-card" href="competition.html"><span class="num">04</span><h2>Competitions</h2><p>Countdown, results and gallery</p><span class="arrow">Race day →</span></a></li>
+      <li class="reveal from-left"><a class="link-card" href="university.html"><span class="num">01</span><h2>The University</h2><p>Our faculty and its history</p><span class="arrow">Explore →</span></a></li>
+      <li class="reveal from-right"><a class="link-card" href="team.html"><span class="num">02</span><h2>The Team</h2><p>Leadership and member profiles</p><span class="arrow">Meet us →</span></a></li>
+      <li class="reveal from-left"><a class="link-card" href="car.html"><span class="num">03</span><h2>The Car</h2><p>Build story, features and sponsors</p><span class="arrow">Inspect →</span></a></li>
+      <li class="reveal from-right"><a class="link-card" href="competition.html"><span class="num">04</span><h2>Competitions</h2><p>Countdown, results and gallery</p><span class="arrow">Race day →</span></a></li>
     </ul>
 
     <div class="marquee" aria-hidden="true"><div class="marquee-track">
@@ -68,7 +70,7 @@
       <span>Design</span><span>Build</span><span>Test</span><span>Race</span><span>Repeat</span><span>Formula Student</span><span>Peradeniya</span><span>Optimum Racing</span>
     </div></div>
 
-    <section class="stats reveal" aria-label="Team at a glance">
+    <section class="stats reveal stagger" aria-label="Team at a glance">
       <div class="stat"><strong><span data-count="26">0</span></strong><span>Student engineers</span></div>
       <div class="stat"><strong><span data-count="3">0</span><sup>yrs</sup></strong><span>Building race cars</span></div>
       <div class="stat"><strong><span data-count="42">0</span><sup>°</sup></strong><span>Max cornering lean test</span></div>

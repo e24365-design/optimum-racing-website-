@@ -97,6 +97,8 @@
     document.addEventListener('click', closePt);
     addEventListener('keydown', function (e) { if (e.key === 'Escape') closePt(); });
     addEventListener('resize', function () { if (openIdx > -1) place(pts[openIdx]); });
+    addEventListener('load', function () { if (openIdx > -1) place(pts[openIdx]); });
+    pts[0].closest('.car-img-wrap').addEventListener('transitionend', function () { if (openIdx > -1) place(pts[openIdx]); });
   }
 
   /* ---------------------------------------------------------------
