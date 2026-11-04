@@ -96,28 +96,6 @@
     });
   }
 
-  /* ---- LEGO hero: pinned to the right edge, glides top -> bottom as you scroll ---- */
-  var lego = $('.lego-hero');
-  if (lego) {
-    document.body.classList.add('has-lego');
-    var cur = 0, goal = 0, lastY = scrollY, idle;
-    function legoGoal() {
-      var h = document.documentElement.scrollHeight - innerHeight, p = h > 0 ? Math.min(1, Math.max(0, scrollY / h)) : 0;
-      goal = 84 + p * Math.max(0, innerHeight - 84 - lego.offsetHeight - 14);
-    }
-    function legoFrame() {
-      cur += (goal - cur) * (reduce ? 1 : 0.14);
-      lego.style.transform = 'translateY(' + cur.toFixed(1) + 'px)';
-      requestAnimationFrame(legoFrame);
-    }
-    addEventListener('scroll', function () {
-      var dy = scrollY - lastY; lastY = scrollY; legoGoal();
-      if (Math.abs(dy) > 0) { lego.classList.add('walking'); lego.classList.toggle('up', dy < 0); clearTimeout(idle); idle = setTimeout(function () { lego.classList.remove('walking'); }, 160); }
-    }, { passive: true });
-    addEventListener('resize', legoGoal);
-    legoGoal(); cur = goal; legoFrame();
-  }
-
   /* ---- Timeline fill ---- */
   var tl = $('.timeline'), tlFill = tl && $('.fill', tl);
   function updateTimeline() {
